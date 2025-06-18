@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # portfolio
 =======
 # Getting Started with Create React App
@@ -48,3 +49,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 >>>>>>> 2371524 (Initialize project using Create React App)
+=======
+# portfolio
+>>>>>>> b7d4c536be8d5dbc2368eee41c38663cdc4a82e8

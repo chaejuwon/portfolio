@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Home from "./Routes/Home";
+import About from "./Routes/About";
+import Project from "./Routes/Project";
+import Contact from "./Routes/Contact";
+import Header from "./components/common/Header";
+import SideNav from "./components/common/SideNav";
+import styled from "styled-components";
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+`;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/home" element={<Wrapper><SideNav /><Home /></Wrapper>} />
+        <Route path="/about" element={<Wrapper><SideNav /><About /></Wrapper>} />
+        <Route path="/project" element={<Wrapper><SideNav /><Project /></Wrapper>} />
+        <Route path="/contact" element={<Wrapper><SideNav /><Contact /></Wrapper>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
