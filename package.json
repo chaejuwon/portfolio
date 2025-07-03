@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@tanstack/react-query": "^5.81.5",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -16,9 +18,11 @@
     "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.58.1",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.6.2",
     "react-scripts": "5.0.1",
+    "react-type-animation": "^3.2.0",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.19",
     "typescript": "^4.9.5",
@@ -53,5 +57,5 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.34"
   },
-  "homepage" : "https://chaejuwon.github.io/portfolio"
+  "homepage": "https://chaejuwon.github.io/portfolio"
 }

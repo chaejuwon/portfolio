@@ -1,6 +1,8 @@
+import HomeItem from "../components/home/HomeItem";
+
 function Home() {
   return (
-    <h1>Home</h1>
+    <HomeItem />
   )
 }
 export default Home;

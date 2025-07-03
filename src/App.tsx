@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 2fr 8fr;
+  grid-template-columns: 1.5fr 8.5fr;
 `;
 function App() {
   return (

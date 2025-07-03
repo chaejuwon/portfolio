@@ -1,6 +1,8 @@
+import ContactItem from "../components/contact/ContactItem";
+
 function Contact() {
   return (
-    <h1>Contact</h1>
+    <ContactItem />
   )
 }
 export default Contact;

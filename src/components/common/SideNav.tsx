@@ -1,25 +1,23 @@
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import HomeImg from "../../images/home.png";
-import ProjectImg from "../../images/project.png";
-import ContactImg from "../../images/contact.png";
-import AboutImg from "../../images/about.png";
-import { FaAngleDown } from "react-icons/fa6";
-import { FaAngleRight } from "react-icons/fa6";
-import { useState } from "react";
+import { FaHouse, FaUser, FaBriefcase, FaEnvelope, FaAngleDown } from "react-icons/fa6";
+import reactIcon from "../../assets/images/react-icon.svg";
+import jsIcon from "../../assets/images/js-icon.svg";
+import cssIcon from "../../assets/images/css-icon.svg";
+import phpIcon from "../../assets/images/php-icon.svg";
 
 const Wrapper = styled.div`
   display: flex;
-  border-right: 1px solid ${props => props.theme.black.borderColor};
+  border-right: 1px solid ${props => props.theme.component.border};
 `;
 const LogoWrap = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${props => props.theme.black.borderColor};
+  border-right: 1px solid ${props => props.theme.component.border};
 `;
 const LogoItem = styled.li<{ active:boolean }>`
-  padding: 20px;
+  padding: 15px 20px;
   position: relative;
   img {
     width: 30px;
@@ -33,7 +31,7 @@ const LogoItem = styled.li<{ active:boolean }>`
     left:0;
     width: 2px;
     height: 100%;
-    background: ${props => props.theme.black.blue}
+    background: ${props => props.theme.palette.blue};
   }
 `;
 const MenuWrap = styled.ul`
@@ -41,27 +39,44 @@ const MenuWrap = styled.ul`
 `;
 const MenuItem = styled.li`
   h3 {
-    font-size:18px;
+    font-size:20px;
     margin-bottom: 5px;
     display: flex;
     align-items: center;
-    gap: 5px
-  }
-  span {
-    margin-left:10px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
     gap: 5px;
+    cursor:pointer;
   }
+  div {
+    a {
+      display: flex;
+      align-items: center;
+      margin:10px 0 10px 10px;
+    }
+    img {
+      width: 20px;
+    }
+    span {
+      margin-left: 8px;
+      align-items: center;
+      font-size: 18px;
+    }
+  }
+
 `;
 
 function Header() {
   const ImgArr = [
-    { "link": "/home", "img": HomeImg },
-    { "link": "/about", "img": AboutImg },
-    { "link": "/project", "img": ProjectImg },
-    { "link": "/contact", "img": ContactImg }
+    { "id": 1,"link": "/home", "icon": <FaHouse fontSize={25} /> },
+    { "id": 2,"link": "/about", "icon": <FaUser fontSize={25} /> },
+    { "id": 3,"link": "/project", "icon": <FaBriefcase fontSize={25} /> },
+    { "id": 4,"link": "/contact", "icon": <FaEnvelope fontSize={25} /> }
+  ];
+
+  const IconArr = [
+    { "id": 1, "link": "/home", "img": reactIcon, "title": "home" },
+    { "id": 1, "link": "/about", "img": jsIcon, "title": "about" },
+    { "id": 1, "link": "/project", "img": cssIcon, "title": "project" },
+    { "id": 1, "link": "/contact", "img": phpIcon, "title": "contact" },
   ];
   const path = useLocation();
   const pathName = path.pathname.slice(1);
@@ -72,8 +87,8 @@ function Header() {
           const isActive = path.pathname === item.link;
 
           return (
-            <LogoItem key={item.img} active={isActive}>
-              <Link to={item.link}><img src={item.img} /></Link>
+            <LogoItem key={item.id} active={isActive}>
+              <Link to={item.link}>{item.icon}</Link>
             </LogoItem>
             )
         })}
@@ -81,7 +96,12 @@ function Header() {
       <MenuWrap>
         <MenuItem>
           <h3><FaAngleDown /> Portfolio</h3>
-          <span><FaAngleRight /> {pathName}</span>
+          <div>
+            {IconArr.map(icon => (
+              <Link to={icon.link} key={icon.id}><img src={icon.img} /><span> {icon.title}</span></Link>
+            ))}
+          </div>
+
         </MenuItem>
       </MenuWrap>
     </Wrapper>

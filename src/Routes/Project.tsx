@@ -1,6 +1,8 @@
+import ProjectItem from "../components/project/ProjectItem";
+
 function Project() {
   return (
-    <h1>Project</h1>
-  )
+    <ProjectItem />
+  );
 }
 export default Project
