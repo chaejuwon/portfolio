@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding:0 15px;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
   p {
     text-align: center;
   }

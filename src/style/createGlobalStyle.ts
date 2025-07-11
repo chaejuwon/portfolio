@@ -7,6 +7,10 @@ import D2CodingBold2 from '../assets/fonts/D2Coding/D2CodingBold.woff2';
 import SourceSansPro300 from '../assets/fonts/SourceSansPro/SourceSansPro300.woff2';
 import SourceSansPro400 from '../assets/fonts/SourceSansPro/SourceSansPro400.woff2';
 import SourceSansPro700 from '../assets/fonts/SourceSansPro/SourceSansPro700.woff2';
+import PretendardRegular from '../assets/fonts/Pretendard/Pretendard-Regular.woff';
+import PretendardMedium from '../assets/fonts/Pretendard/Pretendard-Medium.woff';
+import PretendardBold from '../assets/fonts/Pretendard/Pretendard-Bold.woff';
+import PretendardExtraBold from '../assets/fonts/Pretendard/Pretendard-ExtraBold.woff';
 
 export const GlobalStyle = createGlobalStyle`
 //@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -38,6 +42,27 @@ export const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'sourceSansPro';
   src: url(${SourceSansPro700}) format('woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'pretendard';
+  src: url(${PretendardRegular}) format('woff2');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'pretendard';
+  src: url(${PretendardMedium}) format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'pretendard';
+  src: url(${PretendardBold}) format('woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'pretendard';
+  src: url(${PretendardExtraBold}) format('woff2');
   font-weight: 700;
 }
 
@@ -100,10 +125,11 @@ table {
 
 body {
     font-weight: 300;
-    font-family: 'sourceSansPro', 'D2Coding', sans-serif;
+    font-family: 'sourceSansPro', sans-serif;
     color: ${props => props.theme.palette.white};
     line-height: 1.2;
     background-color: black;
+    overflow: hidden;
 }
 
 a {
@@ -118,18 +144,18 @@ a {
 
 /* 스크롤바 트랙 (배경) */
 &::-webkit-scrollbar-track {
-     background: ${props => props.theme.palette.white};
+     background: ${props => props.theme.palette.gray["300"]};
  }
 
 /* 스크롤바 핸들 */
 &::-webkit-scrollbar-thumb {
-     background: ${props => props.theme.palette.gray}; /* 예시 색상 */
+     background: ${props => props.theme.palette.gray["800"]}; /* 예시 색상 */
      border-radius: 4px; /* 둥근 모서리 */
  }
 
 /* 스크롤바 핸들 hover 시 */
 &::-webkit-scrollbar-thumb:hover {
-     background: ${props => props.theme.palette.white};
+     background: ${props => props.theme.palette.gray["600"]};
  }
 ;
 `;

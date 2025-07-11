@@ -1,34 +1,94 @@
 [
   {
-    "category": "company",
+    "category": "\uD83D\uDCC2 Company",
     "id": 1,
     "title": "스펙토리(포털 페이지)",
     "description": "php + twig 만든 웹 포털입니다.",
-    "tags": ["twig", "php", "javascript"],
-    "img": "/images/example.jpg"
+    "tags": [
+      {
+        "id": 1,
+        "tag": "twig"
+      },
+      {
+        "id": 2,
+        "tag": "php"
+      },
+      {
+        "id": 3,
+        "tag": "javascript"
+      }
+    ],
+    "img": "/images/spt_web.png",
+    "year" : 2023,
+    "path": "web"
   },
   {
-    "category": "company",
+    "category": "\uD83D\uDCC2 SideProject",
     "id": 2,
     "title": "스펙토리(플랫폼 관리자 페이지)",
     "description": "php + twig 만든 플랫폼 시스템 입니다.",
-    "tags": ["twig", "php", "javascript"],
-    "img": "images/spt_admin.png"
+    "tags": [
+      {
+        "id": 1,
+        "tag": "twig"
+      },
+      {
+        "id": 2,
+        "tag": "php"
+      },
+      {
+        "id": 3,
+        "tag": "javascript"
+      }
+    ],
+    "img": "images/spt_admin.png",
+    "year" : 2024,
+    "path": "admin"
   },
   {
-    "category": "company",
+    "category": "\uD83D\uDCC2 ToyProject",
     "id": 3,
     "title": "스펙토리(사용자 접수 페이지)",
     "description": "php + twig 만든 사용자 접수 페이지 입니다.",
-    "tags": ["twig", "php", "javascript"],
-    "img": "images/spt_contest.png"
+    "tags": [
+      {
+        "id": 1,
+        "tag": "twig"
+      },
+      {
+        "id": 2,
+        "tag": "php"
+      },
+      {
+        "id": 3,
+        "tag": "javascript"
+      }
+    ],
+    "img": "images/spt_contest.png",
+    "year" : 2024,
+    "path": "contest"
   },
   {
-    "category": "company",
+    "category": "\uD83D\uDCC2 Company",
     "id": 4,
     "title": "스펙토리(심사 페이지)",
     "description": "php + twig 만든 사용자 심사 페이지 입니다.",
-    "tags": ["twig", "php", "javascript"],
-    "img": "images/spt_simsa.png"
+    "tags": [
+      {
+        "id": 1,
+        "tag": "twig"
+      },
+      {
+        "id": 2,
+        "tag": "php"
+      },
+      {
+        "id": 3,
+        "tag": "javascript"
+      }
+    ],
+    "img": "images/spt_simsa.png",
+    "year" : 2024,
+    "path": "simsa"
   }
 ]
