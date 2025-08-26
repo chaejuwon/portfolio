@@ -10,6 +10,11 @@ import projectIcon from "../../assets/images/project_title_icon.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useMatch, Link } from "react-router-dom";
 import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { IoIosLink } from "react-icons/io";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 const Wrapper = styled.div`
   overflow-y: scroll;
   font-family: 'D2Coding', sans-serif;
@@ -55,6 +60,7 @@ const ProjectGridItem = styled(motion.li)`
 `;
 const Thumbnail = styled.img`
   width: 100%;
+  aspect-ratio: 8/4;
 `;
 const InfoWrap = styled.div`
   padding: 20px;
@@ -98,6 +104,7 @@ const DetailWrap = styled.div`
   left:0;
   width: 100%;
   height: 100%;
+  z-index: 3;
 `;
 const Overlay = styled(motion.div)`
   background: rgba(0,0,0, .8);
@@ -238,6 +245,23 @@ const CloseButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
 `;
+const HoverWrap = styled(motion.div)`
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, .8);
+  z-index: 2;
+`;
+const HoverIconWrap = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 20px;
+  gap: 10px;
+`;
 // framer-motion
 const overlayVariants = {
   initial: {
@@ -280,6 +304,21 @@ const detailVariants = {
     }
   }
 }
+const hoverVariants = {
+  initial: {
+    opacity: 0
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 0.1,
+      duration: 0.3
+    },
+    exit: {
+      opacity: 0
+    }
+  }
+}
 function ProjectItem() {
   const navigate = useNavigate();
   const bigMatch = useMatch("/project/:category/:projectId");
@@ -289,6 +328,7 @@ function ProjectItem() {
     queryKey: ['projects'],
     queryFn: projectJson
   });
+  console.log(listData);
   // 프로젝트 디테일
   const { isLoading: detailLoading, data: detailData } = useQuery<IProjectDetailProps>({
     queryKey: ['detail', projectId],
@@ -328,128 +368,150 @@ function ProjectItem() {
   const [category, setCategory] = useState("ALL");
   const onClickNav = (category: string) => {
     setCategory(category);
-    console.log(listData);
-
   }
   const filteredData = listData?.filter((project) => {
     return category === "ALL" || project.category === category;
   });
   return (
-    <Wrapper>
-      <ProjectWrapper>
-        <ProjectTitle><img src={projectIcon} />My Project</ProjectTitle>
-        <ProjectNav>
-          {navCategory.map((item, index) => (
-            <ProjectBtn key={index} onClick={() => onClickNav(item.category)}>{item.category}</ProjectBtn>
-          ))}
-        </ProjectNav>
-        <ProjectGrid>
-          {listLoading ? "isLoading" : (
-            filteredData?.map((project) => (
-              <ProjectGridItem key={project.id}>
-                <Thumbnail src={project.img} alt={project.title} onClick={() => onDetail(project.category, project.id)} />
-                <InfoWrap>
-                  <InfoTitleWrap>
-                    <h2>{project.title}</h2>
-                    <span>{project.year}</span>
-                  </InfoTitleWrap>
-                  <p>{project.description}</p>
-                  {project.tags.map((item) => (
-                    <span key={item.id}>#{item.tag}</span>
-                  ))}
-                </InfoWrap>
-                <CategoryLabel>{project.category}</CategoryLabel>
-              </ProjectGridItem>
-            ))
-          )}
-        </ProjectGrid>
-        <AnimatePresence>
-          {bigMatch ? (
-            <>
-              {detailLoading ? "loading..." : (
-                <DetailWrap>
-                  <Overlay onClick={leaveDetail} variants={overlayVariants} initial="initial" animate="animate" exit="exit"></Overlay>
-                  <DetailContent variants={detailVariants} initial="initial" animate="animate" exit="exit">
-                    <DetailTitle>
-                      {detailData?.title}
-                      <span>{detailData?.year}</span>
-                    </DetailTitle>
-                    <Hr />
-                    <DetailInfo>
-                      <InfoContainer>
-                        <MainImg src={detailData?.mainImg} />
-                      </InfoContainer>
-                      <InfoContainer>
-                        <InfoTitle>프로젝트 개요</InfoTitle>
-                        <InfoContent>{detailData?.description}</InfoContent>
-                      </InfoContainer>
-                      <InfoContainer>
-                        <InfoTitle>사용 기술 스택</InfoTitle>
-                        <InfoTable>
-                          <thead>
-                          <tr>
-                            <th>Type</th>
-                            <th>Stack</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <th>FrontEnd</th>
-                            <th>{detailData?.tech_stack.frontend.join(', ')}</th>
-                          </tr>
-                          <tr>
-                            <th>BackEnd</th>
-                            <th>{detailData?.tech_stack.backend.join(', ')}</th>
-                          </tr>
-                          <tr>
-                            <th>Database</th>
-                            <th>{detailData?.tech_stack.database.join(', ')}</th>
-                          </tr>
-                          <tr>
-                            <th>Environment</th>
-                            <th>{detailData?.tech_stack.environment.join(', ')}</th>
-                          </tr>
-                          </tbody>
-                        </InfoTable>
-                      </InfoContainer>
-                      <InfoContainer>
-                        <InfoTitle>주요 역할 및 기여도</InfoTitle>
-                        <ContributionWrap>
-                          {Object.entries(detailData?.contribution || {}).map(([category, items]) => (
-                            <ContributionSection key={category}>
-                              <ContributionTitle>{labelMap[category]}</ContributionTitle>
-                              <ContributionList>
-                                {items.map((item, index) => (
-                                  <ContributionItem key={index}>{item}</ContributionItem>
-                                ))}
-                              </ContributionList>
-                            </ContributionSection>
-                          ))}
-                        </ContributionWrap>
-                      </InfoContainer>
-                      <InfoContainer>
-                        <InfoTitle>주요 기능</InfoTitle>
-                        <FeatureLists>
-                          {detailData?.features.map((item, index) => (
-                            <FeatureItem key={index}>
-                              {item}
-                            </FeatureItem>
-                          ))}
-                        </FeatureLists>
-                      </InfoContainer>
-                      <InfoContainer>
-                        <MainImg src={detailData?.mockupImg} />
-                      </InfoContainer>
-                      <CloseButton onClick={leaveDetail}>닫기</CloseButton>
-                    </DetailInfo>
-                  </DetailContent>
-                </DetailWrap>
-              )}
-            </>
-          ) : null}
-        </AnimatePresence>
-      </ProjectWrapper>
+      <Wrapper>
+        <ProjectWrapper>
+          <ProjectTitle><img src={projectIcon} />My Project</ProjectTitle>
+          <ProjectNav>
+            {navCategory.map((item, index) => (
+              <ProjectBtn key={index} onClick={() => onClickNav(item.category)}>{item.category}</ProjectBtn>
+            ))}
+          </ProjectNav>
+          <ProjectGrid>
+            {listLoading ? "isLoading" : (
+              filteredData?.map((project) => (
+                <ProjectGridItem key={project.id} >
+                  <Thumbnail src={project.img} alt={project.title} />
+                  <InfoWrap>
+                    <InfoTitleWrap>
+                      <h2>{project.title}</h2>
+                      <span>{project.year}</span>
+                    </InfoTitleWrap>
+                    <p>{project.description}</p>
+                    {project.tags.map((item) => (
+                      <span key={item.id}>#{item.tag}</span>
+                    ))}
+                  </InfoWrap>
+                  <CategoryLabel>{project.category}</CategoryLabel>
+                  <HoverWrap variants={hoverVariants} initial="initial" whileHover="animate" exit="exit">
+                    <HoverIconWrap>
+                      <Link to={project.git} target="_blank" data-tooltip-id="git-tip" data-tooltip-content="GitHub">
+                        <FaGithub fontSize={30} />
+                        <Tooltip id="git-tip" place="top" />
+                      </Link>
+                      <Link to={project.homepage} target="_blank" data-tooltip-id="home-tip" data-tooltip-content="Homepage">
+                        <FaHome fontSize={30} />
+                        <Tooltip id="home-tip" place="top" />
+                      </Link>
+                      <Link to="javascript:">
+                        <IoIosLink fontSize={30} onClick={() => onDetail(project.category, project.id)} data-tooltip-id="modal-tip" data-tooltip-content="Modal" />
+                        <Tooltip id="modal-tip" place="top" />
+                      </Link>
+                    </HoverIconWrap>
+                  </HoverWrap>
+                </ProjectGridItem>
+              ))
+            )}
+          </ProjectGrid>
+          <AnimatePresence>
+            {bigMatch ? (
+              <>
+                {detailLoading ? "loading..." : (
+                  <DetailWrap>
+                    <Overlay onClick={leaveDetail} variants={overlayVariants} initial="initial" animate="animate" exit="exit"></Overlay>
+                    <DetailContent variants={detailVariants} initial="initial" animate="animate" exit="exit">
+                      <DetailTitle>
+                        {detailData?.title}
+                        <span>{detailData?.year}</span>
+                      </DetailTitle>
+                      <Hr />
+                      <DetailInfo>
+                        <InfoContainer>
+                          <MainImg src={detailData?.mainImg} />
+                        </InfoContainer>
+                        <InfoContainer>
+                          <InfoTitle>프로젝트 개요</InfoTitle>
+                          <InfoContent>{detailData?.description}</InfoContent>
+                        </InfoContainer>
+                        <InfoContainer>
+                          <InfoTitle>사용 기술 스택</InfoTitle>
+                          <InfoTable>
+                            <thead>
+                            <tr>
+                              <th>Type</th>
+                              <th>Stack</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                              <th>FrontEnd</th>
+                              <th>{detailData?.tech_stack.frontend.join(', ')}</th>
+                            </tr>
+                            {detailData?.tech_stack.backend ? (
+                              <tr>
+                                <th>BackEnd</th>
+                                <th>{detailData?.tech_stack.backend.join(', ')}</th>
+                              </tr>) : null
+                            }
+                            {detailData?.tech_stack.database ? (
+                              <tr>
+                                <th>Database</th>
+                                <th>{detailData?.tech_stack.database.join(', ')}</th>
+                              </tr>) : null
+                            }
+                            {detailData?.tech_stack.environment ? (
+                              <tr>
+                                <th>Environment</th>
+                                <th>{detailData?.tech_stack.environment.join(', ')}</th>
+                              </tr>) : null
+                            }
+
+
+                            </tbody>
+                          </InfoTable>
+                        </InfoContainer>
+                        <InfoContainer>
+                          <InfoTitle>주요 역할 및 기여도</InfoTitle>
+                          <ContributionWrap>
+                            {Object.entries(detailData?.contribution || {}).map(([category, items]) => (
+                              <ContributionSection key={category}>
+                                <ContributionTitle>{labelMap[category]}</ContributionTitle>
+                                <ContributionList>
+                                  {items.map((item, index) => (
+                                    <ContributionItem key={index}>{item}</ContributionItem>
+                                  ))}
+                                </ContributionList>
+                              </ContributionSection>
+                            ))}
+                          </ContributionWrap>
+                        </InfoContainer>
+                        <InfoContainer>
+                          <InfoTitle>주요 기능</InfoTitle>
+                          <FeatureLists>
+                            {detailData?.features.map((item, index) => (
+                              <FeatureItem key={index}>
+                                {item}
+                              </FeatureItem>
+                            ))}
+                          </FeatureLists>
+                        </InfoContainer>
+                        <InfoContainer>
+                          <MainImg src={detailData?.mockupImg} />
+                        </InfoContainer>
+                        <CloseButton onClick={leaveDetail}>닫기</CloseButton>
+                      </DetailInfo>
+                    </DetailContent>
+                  </DetailWrap>
+                )}
+              </>
+            ) : null}
+          </AnimatePresence>
+        </ProjectWrapper>
     </Wrapper>
-  )
-}
+      )
+    }
 export default ProjectItem;

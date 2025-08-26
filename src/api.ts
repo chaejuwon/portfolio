@@ -8,6 +8,9 @@ export interface IProjectProps {
   title: string;
   description: string;
   year: number;
+  path: string;
+  git: string;
+  homepage: string;
 }
 
 export interface ITagsProps {

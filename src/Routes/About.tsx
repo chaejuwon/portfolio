@@ -1,6 +1,8 @@
+import AboutItem from "../components/about/AbountItem";
+
 function About() {
   return (
-    <h1>About</h1>
+    <AboutItem />
   )
 }
 export default About

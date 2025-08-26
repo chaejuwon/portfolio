@@ -16,7 +16,7 @@ const LogoWrap = styled.ul`
   flex-direction: column;
   border-right: 1px solid ${props => props.theme.component.border};
 `;
-const LogoItem = styled.li<{ active:boolean }>`
+const LogoItem = styled.li<{ $active:boolean }>`
   padding: 15px 20px;
   position: relative;
   img {
@@ -25,7 +25,7 @@ const LogoItem = styled.li<{ active:boolean }>`
   &:before {
     content: "";
     clear: both;
-    display: ${props => props.active ? "block" : "none"};
+    display: ${props => props.$active ? "block" : "none"};
     position: absolute;
     top:0;
     left:0;
@@ -74,9 +74,9 @@ function Header() {
 
   const IconArr = [
     { "id": 1, "link": "/home", "img": reactIcon, "title": "home" },
-    { "id": 1, "link": "/about", "img": jsIcon, "title": "about" },
-    { "id": 1, "link": "/project", "img": cssIcon, "title": "project" },
-    { "id": 1, "link": "/contact", "img": phpIcon, "title": "contact" },
+    { "id": 2, "link": "/about", "img": jsIcon, "title": "about" },
+    { "id": 3, "link": "/project", "img": cssIcon, "title": "project" },
+    { "id": 4, "link": "/contact", "img": phpIcon, "title": "contact" },
   ];
   const path = useLocation();
   const pathName = path.pathname.slice(1);
@@ -87,7 +87,7 @@ function Header() {
           const isActive = path.pathname === item.link;
 
           return (
-            <LogoItem key={item.id} active={isActive}>
+            <LogoItem key={item.id} $active={isActive}>
               <Link to={item.link}>{item.icon}</Link>
             </LogoItem>
             )

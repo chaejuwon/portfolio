@@ -20,10 +20,12 @@
     ],
     "img": "/images/spt_web.png",
     "year" : 2023,
-    "path": "web"
+    "path": "web",
+    "git": "",
+    "homepage": "https://www.spectory.net"
   },
   {
-    "category": "\uD83D\uDCC2 SideProject",
+    "category": "\uD83D\uDCC2 Company",
     "id": 2,
     "title": "스펙토리(플랫폼 관리자 페이지)",
     "description": "php + twig 만든 플랫폼 시스템 입니다.",
@@ -41,12 +43,14 @@
         "tag": "javascript"
       }
     ],
-    "img": "images/spt_admin.png",
+    "img": "/images/spt_admin.png",
     "year" : 2024,
-    "path": "admin"
+    "path": "admin",
+    "git": "",
+    "homepage": "https://adm.spectory.net"
   },
   {
-    "category": "\uD83D\uDCC2 ToyProject",
+    "category": "\uD83D\uDCC2 Company",
     "id": 3,
     "title": "스펙토리(사용자 접수 페이지)",
     "description": "php + twig 만든 사용자 접수 페이지 입니다.",
@@ -64,9 +68,11 @@
         "tag": "javascript"
       }
     ],
-    "img": "images/spt_contest.png",
+    "img": "/images/spt_contest.png",
     "year" : 2024,
-    "path": "contest"
+    "path": "contest",
+    "git": "",
+    "homepage": "https://spec.contestweb.net/online"
   },
   {
     "category": "\uD83D\uDCC2 Company",
@@ -87,8 +93,106 @@
         "tag": "javascript"
       }
     ],
-    "img": "images/spt_simsa.png",
+    "img": "/images/spt_simsa.png",
     "year" : 2024,
-    "path": "simsa"
+    "path": "simsa",
+    "git": "",
+    "homepage": "https://simsa.spectory.net"
+  },
+  {
+    "category": "\uD83D\uDCC2 SideProject",
+    "id": 5,
+    "title": "넷플릭스",
+    "description": "React를 이용하여 React-Query를 활용하여 Api를 불러온 넷플릭스 클론입니다.",
+    "tags": [
+      {
+        "id": 1,
+        "tag": "React"
+      },
+      {
+        "id": 2,
+        "tag": "React-Query"
+      },
+      {
+        "id": 3,
+        "tag": "Recoil"
+      }
+    ],
+    "img": "/images/netflex_pc.png",
+    "year" : 2025,
+    "path": "netflex",
+    "git": "https://github.com/chaejuwon/netflex",
+    "homepage": "https://chaejuwon.github.io/netflex/"
+  },
+  {
+    "category": "\uD83D\uDCC2 SideProject",
+    "id": 6,
+    "title": "당근마켓",
+    "description": "PHP, CodeIgniter을 활용하여 당근마켓 제작하였습니다.(회원가입, 로그인 및 CRUD기능 추가)",
+    "tags": [
+      {
+        "id": 1,
+        "tag": "PHP"
+      },
+      {
+        "id": 2,
+        "tag": "CodeIgniter"
+      },
+      {
+        "id": 3,
+        "tag": "Mysql"
+      }
+    ],
+    "img": "/images/carrot_pc.png",
+    "year" : 2023,
+    "path": "carrotMarket",
+    "git": "https://github.com/chaejuwon/ci3_carrotmarket",
+    "homepage": "https://cjw02141.cafe24.com/"
+  },
+  {
+    "category": "\uD83D\uDCC2 ToyProject",
+    "id": 7,
+    "title": "Todo List",
+    "description": "React를 이용한 TodoList 토이프로젝트 입니다.",
+    "tags": [
+      {
+        "id": 1,
+        "tag": "React"
+      },
+      {
+        "id": 2,
+        "tag": "Recoil"
+      }
+    ],
+    "img": "/images/todo_pc.png",
+    "year" : 2025,
+    "path": "todoList",
+    "git": "https://github.com/chaejuwon/todoApp",
+    "homepage": "https://chaejuwon.github.io/todoApp/"
+  },
+  {
+  "category": "\uD83D\uDCC2 ToyProject",
+  "id": 8,
+  "title": "코인트래커",
+  "description": "React, React-Query, coinApi를 이용하여 만든 코인트래커 토이프로젝트 입니다.",
+  "tags": [
+    {
+      "id": 1,
+      "tag": "React"
+    },
+    {
+      "id": 2,
+      "tag": "React-Query"
+    },
+    {
+      "id": 3,
+      "tag": "Recoil"
+    }
+  ],
+  "img": "/images/coin_pc.png",
+  "year" : 2025,
+  "path": "coin",
+  "git": "https://github.com/chaejuwon/coin",
+  "homepage": "https://chaejuwon.github.io/coin"
   }
 ]

@@ -16,6 +16,7 @@ export const theme: DefaultTheme = {
     },
     blue: "#0078D4",
     red: "#ff0002",
+    yellow: "#fdf901"
   },
   component: {
     button: {
