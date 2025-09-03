@@ -62,6 +62,14 @@ function ToolBar() {
           <AiOutlineClose fontSize={14} />
         </ToolBarItem>
       </Link>
+
+      <Link to="/board">
+        <ToolBarItem active={pathName === "board"}>
+          <Img src={reactIcon} />
+          Board
+          <AiOutlineClose fontSize={14} />
+        </ToolBarItem>
+      </Link>
     </Wrapper>
   );
 }

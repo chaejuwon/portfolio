@@ -1,20 +1,28 @@
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { FaHouse, FaUser, FaBriefcase, FaEnvelope, FaAngleDown } from "react-icons/fa6";
+import { FaClipboard } from "react-icons/fa";
 import reactIcon from "../../assets/images/react-icon.svg";
 import jsIcon from "../../assets/images/js-icon.svg";
 import cssIcon from "../../assets/images/css-icon.svg";
 import phpIcon from "../../assets/images/php-icon.svg";
+import { FaGear } from "react-icons/fa6";
 
 const Wrapper = styled.div`
   display: flex;
   border-right: 1px solid ${props => props.theme.component.border};
 `;
+const AsideWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid ${props => props.theme.component.border};
+  height: calc(100vh - 80px);
+`;
 const LogoWrap = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${props => props.theme.component.border};
 `;
 const LogoItem = styled.li<{ $active:boolean }>`
   padding: 15px 20px;
@@ -32,6 +40,14 @@ const LogoItem = styled.li<{ $active:boolean }>`
     width: 2px;
     height: 100%;
     background: ${props => props.theme.palette.blue};
+  }
+`;
+const IconWrap = styled.div`
+  p {
+    padding: 15px 20px;
+    cursor: pointer;
+  }
+  svg {
   }
 `;
 const MenuWrap = styled.ul`
@@ -69,7 +85,8 @@ function Header() {
     { "id": 1,"link": "/home", "icon": <FaHouse fontSize={25} /> },
     { "id": 2,"link": "/about", "icon": <FaUser fontSize={25} /> },
     { "id": 3,"link": "/project", "icon": <FaBriefcase fontSize={25} /> },
-    { "id": 4,"link": "/contact", "icon": <FaEnvelope fontSize={25} /> }
+    { "id": 4,"link": "/contact", "icon": <FaEnvelope fontSize={25} /> },
+    { "id": 5,"link": "/board", "icon": <FaClipboard fontSize={25} /> }
   ];
 
   const IconArr = [
@@ -77,22 +94,32 @@ function Header() {
     { "id": 2, "link": "/about", "img": jsIcon, "title": "about" },
     { "id": 3, "link": "/project", "img": cssIcon, "title": "project" },
     { "id": 4, "link": "/contact", "img": phpIcon, "title": "contact" },
+    { "id": 5, "link": "/board", "img": reactIcon, "title": "board" },
+
   ];
   const path = useLocation();
   const pathName = path.pathname.slice(1);
   return (
     <Wrapper>
-      <LogoWrap>
-        {ImgArr.map(item => {
-          const isActive = path.pathname === item.link;
+      <AsideWrap>
+        <LogoWrap>
+          {ImgArr.map(item => {
+            const isActive = path.pathname === item.link;
 
-          return (
-            <LogoItem key={item.id} $active={isActive}>
-              <Link to={item.link}>{item.icon}</Link>
-            </LogoItem>
+            return (
+              <LogoItem key={item.id} $active={isActive}>
+                <Link to={item.link}>{item.icon}</Link>
+              </LogoItem>
             )
-        })}
-      </LogoWrap>
+          })}
+        </LogoWrap>
+        <IconWrap>
+          <p>
+            <FaGear size={30} />
+          </p>
+        </IconWrap>
+      </AsideWrap>
+
       <MenuWrap>
         <MenuItem>
           <h3><FaAngleDown /> Portfolio</h3>

@@ -8,11 +8,14 @@ import Header from "./components/common/Header";
 import SideNav from "./components/common/SideNav";
 import styled from "styled-components";
 import ToolBar from "./components/common/ToolBar";
+import Footer from "./components/common/Footer";
+import Board from "./Routes/Board";
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 8.5fr;
   margin-top:50px;
+  height: calc(100vh - 80px);
 `;
 const ContentWrap = styled.div`
   display: flex;
@@ -33,9 +36,10 @@ function App() {
             <Route path="/project" element={<Project />} />
             <Route path="/project/:category/:projectId" element={<Project />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/board" element={<Board />} />
           </Routes>
         </ContentWrap>
-
+        <Footer />
       </Wrapper>
     </BrowserRouter>
   );

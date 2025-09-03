@@ -114,7 +114,7 @@ const Overlay = styled(motion.div)`
   width: 100%;
   height: 100%;
 `;
-const DetailContent = styled((motion.div))`
+const DetailContent = styled(motion.div)`
   width:40%;
   height:80vh;
   position: fixed;
@@ -328,7 +328,6 @@ function ProjectItem() {
     queryKey: ['projects'],
     queryFn: projectJson
   });
-  console.log(listData);
   // 프로젝트 디테일
   const { isLoading: detailLoading, data: detailData } = useQuery<IProjectDetailProps>({
     queryKey: ['detail', projectId],
@@ -469,8 +468,6 @@ function ProjectItem() {
                                 <th>{detailData?.tech_stack.environment.join(', ')}</th>
                               </tr>) : null
                             }
-
-
                             </tbody>
                           </InfoTable>
                         </InfoContainer>

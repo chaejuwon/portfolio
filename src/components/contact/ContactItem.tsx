@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Wrapper = styled.div`
   overflow-y: scroll;
   font-family: 'D2Coding', sans-serif;
-  height: calc(100vh - 86px);
+  height: calc(100vh - 80px);
 `;
 const ContactWrapper = styled.div`
   margin: 2% 5%;
