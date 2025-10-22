@@ -384,7 +384,7 @@ function ProjectItem() {
             {listLoading ? "isLoading" : (
               filteredData?.map((project) => (
                 <ProjectGridItem key={project.id} >
-                  <Thumbnail src={project.img} alt={project.title} />
+                  <Thumbnail src={`${process.env.PUBLIC_URL}${project.img}`} alt={project.title} />
                   <InfoWrap>
                     <InfoTitleWrap>
                       <h2>{project.title}</h2>
@@ -430,7 +430,7 @@ function ProjectItem() {
                       <Hr />
                       <DetailInfo>
                         <InfoContainer>
-                          <MainImg src={detailData?.mainImg} />
+                          <MainImg src={`${process.env.PUBLIC_URL}${detailData?.mainImg}`} />
                         </InfoContainer>
                         <InfoContainer>
                           <InfoTitle>프로젝트 개요</InfoTitle>
@@ -497,7 +497,7 @@ function ProjectItem() {
                           </FeatureLists>
                         </InfoContainer>
                         <InfoContainer>
-                          <MainImg src={detailData?.mockupImg} />
+                          <MainImg src={`${process.env.PUBLIC_URL}${detailData?.mockupImg}`} />
                         </InfoContainer>
                         <CloseButton onClick={leaveDetail}>닫기</CloseButton>
                       </DetailInfo>
