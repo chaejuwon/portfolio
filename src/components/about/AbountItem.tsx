@@ -152,23 +152,23 @@ function AboutItem() {
                 ))}
               </div>
 
-              <h3 className="text-xl font-semibold mb-4 text-white">Backend & Tools</h3>
-              <div className="flex flex-wrap gap-4">
-                {[
-                  { src: "/portfolio/images/node.png", name: "Node.js", desc: "API 서버 구축 및 간단한 백엔드 로직 구현" },
-                  { src: "/portfolio/images/git.png", name: "Git", desc: "협업 환경에서 브랜치 전략 관리 경험" },
-                  { src: "/portfolio/images/figma.png", name: "Figma", desc: "UI 프로토타이핑 및 디자인 협업" },
-                  { src: "/portfolio/images/aws.png", name: "AWS", desc: "기본적인 EC2 및 S3 사용 경험" },
-                ].map((tool, idx) => (
-                  <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">
-                    <img src={tool.src} alt={tool.name} className="w-12 h-12 mx-auto mb-2" />
-                    <h4 className="text-center text-sm text-white font-medium">{tool.name}</h4>
-                    <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">
-                      {tool.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {/*<h3 className="text-xl font-semibold mb-4 text-white">Backend & Tools</h3>*/}
+              {/*<div className="flex flex-wrap gap-4">*/}
+              {/*  {[*/}
+              {/*    { src: "/portfolio/images/node.png", name: "Node.js", desc: "API 서버 구축 및 간단한 백엔드 로직 구현" },*/}
+              {/*    { src: "/portfolio/images/git.png", name: "Git", desc: "협업 환경에서 브랜치 전략 관리 경험" },*/}
+              {/*    { src: "/portfolio/images/figma.png", name: "Figma", desc: "UI 프로토타이핑 및 디자인 협업" },*/}
+              {/*    { src: "/portfolio/images/aws.png", name: "AWS", desc: "기본적인 EC2 및 S3 사용 경험" },*/}
+              {/*  ].map((tool, idx) => (*/}
+              {/*    <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">*/}
+              {/*      <img src={tool.src} alt={tool.name} className="w-12 h-12 mx-auto mb-2" />*/}
+              {/*      <h4 className="text-center text-sm text-white font-medium">{tool.name}</h4>*/}
+              {/*      <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">*/}
+              {/*        {tool.desc}*/}
+              {/*      </p>*/}
+              {/*    </div>*/}
+              {/*  ))}*/}
+              {/*</div>*/}
             </div>
           </div>
         </section>
