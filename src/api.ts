@@ -44,12 +44,12 @@ export interface IProjectDetailProps {
 }
 
 export const projectJson = async () => {
-  const response = await axios.get(`/data/projects.json`);
+  const response = await axios.get(`${process.env.PUBLIC_URL}/data/projects.json`);
   return response.data;
 }
 
 export const projectDetail = async (projectId: number) => {
-  const response = await axios.get(`/data/projectDetail.json`);
+  const response = await axios.get(`${process.env.PUBLIC_URL}/data/projectDetail.json`);
   const allProjects = response.data;
 
   const project = allProjects.find((item: any) => item.id === projectId);
