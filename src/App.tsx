@@ -23,7 +23,7 @@ const ContentWrap = styled.div`
 `;
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <Wrapper>
         <SideNav />
