@@ -5,6 +5,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import { GlobalStyle } from "../src/style/createGlobalStyle";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

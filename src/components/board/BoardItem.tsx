@@ -9,7 +9,7 @@ import { useMatch, useNavigate } from "react-router-dom";
 
 
 const Wrapper = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   font-family: 'D2Coding', sans-serif;
   height: calc(100vh - 80px);
 `;
