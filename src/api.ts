@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = `https://portfolio-backend-9mey.onrender.com/board`;
+const BASE_URL = `https://portfolio-backend-1-u0s8.onrender.com/board`;
 
 export interface IProjectProps {
   category: string;
