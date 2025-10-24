@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./Routes/Home";
 import About from "./Routes/About";
 import Project from "./Routes/Project";
@@ -23,7 +23,7 @@ const ContentWrap = styled.div`
 `;
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Header />
       <Wrapper>
         <SideNav />
@@ -41,7 +41,7 @@ function App() {
         </ContentWrap>
         <Footer />
       </Wrapper>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

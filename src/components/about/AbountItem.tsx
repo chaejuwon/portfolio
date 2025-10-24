@@ -6,7 +6,11 @@ import html5 from "../../assets/images/html5.png";
 import twig from "../../assets/images/twig.png";
 import typescript from "../../assets/images/typescript.png";
 import javascript from "../../assets/images/javascript.png";
-
+import ai from "../../assets/images/ai.png";
+import figma from "../../assets/images/figma.png";
+import git from "../../assets/images/git.png";
+import jenkins from "../../assets/images/jenkins.png";
+import node from "../../assets/images/node.png";
 const Wrapper = styled.div`
   overflow-y: auto;
   font-family: 'D2Coding', 'Fira Code', monospace;
@@ -135,15 +139,15 @@ function AboutItem() {
               <h3 className="text-xl font-semibold mb-4 text-white">Frontend</h3>
               <div className="flex flex-wrap gap-4 mb-8">
                 {[
-                  { src: react, name: "React", desc: "컴포넌트 기반 UI 설계 및 상태 관리 가능" },
-                  { src: jquery, name: "Jquery", desc: "SSR 환경의 SEO 최적화 구현 경험" },
-                  { src: html5, name: "Html5", desc: "정적 타입 시스템으로 안전한 코드 작성" },
-                  { src: twig, name: "Twig", desc: "반응형 UI 및 다크모드 구성 경험" },
-                  { src: typescript, name: "TypeScript", desc: "정적 타입 시스템으로 안전한 코드 작성" },
-                  { src: javascript, name: "Tailwind CSS", desc: "반응형 UI 및 다크모드 구성 경험" },
+                  { src: react, name: "React", desc: "컴포넌트 기반 아키텍처로 재사용성과 유지보수성을 높인 UI 설계 경험" },
+                  { src: jquery, name: "jQuery", desc: "DOM 제어 및 비동기 요청(Ajax)을 활용한 동적 웹 인터페이스 구현" },
+                  { src: html5, name: "HTML5", desc: "시맨틱 마크업과 웹 표준을 준수한 구조적 페이지 설계" },
+                  { src: twig, name: "Twig", desc: "서버사이드 템플릿 엔진을 활용한 효율적 UI 구성 및 반복 로직 관리" },
+                  { src: typescript, name: "TypeScript", desc: "정적 타입 시스템 기반으로 안정적인 컴포넌트 개발 및 오류 예방" },
+                  { src: javascript, name: "JavaScript", desc: "이벤트 중심 로직과 비동기 처리로 사용자 경험을 개선한 인터랙션 구현" },
                 ].map((tech, idx) => (
                   <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">
-                    <img src={tech.src} alt={tech.name} className="w-12 h-12 mx-auto mb-2" />
+                    <img src={tech.src} alt={tech.name} className="w-24 h-24 mx-auto mb-2" />
                     <h4 className="text-center text-sm text-white font-medium">{tech.name}</h4>
                     <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">
                       {tech.desc}
@@ -152,23 +156,24 @@ function AboutItem() {
                 ))}
               </div>
 
-              {/*<h3 className="text-xl font-semibold mb-4 text-white">Backend & Tools</h3>*/}
-              {/*<div className="flex flex-wrap gap-4">*/}
-              {/*  {[*/}
-              {/*    { src: "/portfolio/images/node.png", name: "Node.js", desc: "API 서버 구축 및 간단한 백엔드 로직 구현" },*/}
-              {/*    { src: "/portfolio/images/git.png", name: "Git", desc: "협업 환경에서 브랜치 전략 관리 경험" },*/}
-              {/*    { src: "/portfolio/images/figma.png", name: "Figma", desc: "UI 프로토타이핑 및 디자인 협업" },*/}
-              {/*    { src: "/portfolio/images/aws.png", name: "AWS", desc: "기본적인 EC2 및 S3 사용 경험" },*/}
-              {/*  ].map((tool, idx) => (*/}
-              {/*    <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">*/}
-              {/*      <img src={tool.src} alt={tool.name} className="w-12 h-12 mx-auto mb-2" />*/}
-              {/*      <h4 className="text-center text-sm text-white font-medium">{tool.name}</h4>*/}
-              {/*      <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">*/}
-              {/*        {tool.desc}*/}
-              {/*      </p>*/}
-              {/*    </div>*/}
-              {/*  ))}*/}
-              {/*</div>*/}
+              <h3 className="text-xl font-semibold mb-4 text-white">Backend & Tools</h3>
+              <div className="flex flex-wrap gap-4">
+                {[
+                  { src: node, name: "Node.js", desc: "Express 기반의 RESTful API 서버 구축 및 간단한 백엔드 로직 구현 경험" },
+                  { src: git, name: "Git", desc: "브랜치 전략을 활용한 협업형 버전 관리 및 GitHub Flow 실무 경험" },
+                  { src: figma, name: "Figma", desc: "UI 프로토타이핑 및 개발자 간 디자인 시스템 협업 경험" },
+                  { src: jenkins, name: "Jenkins", desc: "간단한 빌드 자동화 및 CI/CD 파이프라인 구성 이해" },
+                  { src: ai, name: "Illustrator", desc: "디자인 시안 수정 및 개발용 벡터 자산 제작 협업 경험" },
+                ].map((tool, idx) => (
+                  <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">
+                    <img src={tool.src} alt={tool.name} className="w-24 h-24 mx-auto mb-2" />
+                    <h4 className="text-center text-sm text-white font-medium">{tool.name}</h4>
+                    <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">
+                      {tool.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

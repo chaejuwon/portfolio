@@ -16,6 +16,7 @@ const ProfileImg = styled.div`
   justify-content: center;
 
   svg {
+    margin-top:100px;
     font-size: 400px;
     color: #252525;
   }
