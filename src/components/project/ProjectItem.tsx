@@ -333,14 +333,14 @@ function ProjectItem() {
     queryKey: ['detail', projectId],
     queryFn: () =>projectDetail(projectId),
     enabled: !!projectId
-  })
+  });
   // 모달 클릭 시 이벤트
   const onDetail = (category: string,id: number) => {
     navigate(`/project/${category}/${id}`)
-  }
+  };
   const leaveDetail = () => {
     navigate(`/project`);
-  }
+  };
   // 모달 상세페이지 json key값 텍스트로 변화
   const labelMap: Record<string, string> = {
     design: "🎨 디자인",
@@ -381,7 +381,11 @@ function ProjectItem() {
             ))}
           </ProjectNav>
           <ProjectGrid>
-            {listLoading ? "isLoading" : (
+            {listLoading ? (
+              <div className="flex justify-center items-center w-full py-10">
+                <div className="w-8 h-8 border-4 border-gray-300 border-t-indigo-500 rounded-full animate-spin"></div>
+              </div>
+            ) : (
               filteredData?.map((project) => (
                 <ProjectGridItem key={project.id} >
                   <Thumbnail src={`${process.env.PUBLIC_URL}${project.img}`} alt={project.title} />
