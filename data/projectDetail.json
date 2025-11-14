@@ -308,5 +308,41 @@
     "mockupImg": "/images/coin_mockup.png",
     "year": 2025,
     "state": "완료"
+  },
+  {
+    "category": "SideProject",
+    "path": "maple",
+    "id": 9,
+    "title": "메이플스토리 캐릭터 검색 사이트",
+    "description": "React, React-Query, Tailwind, NEXON Open API를 활용해 제작한 메이플스토리 캐릭터·길드·랭킹 검색 웹사이트입니다.",
+    "tech_stack": {
+      "frontend": ["React", "React-Query", "Tailwind", "RESTful API", "NEXON Open API"],
+      "backend": ["Render", "Express", "Node.js"]
+    },
+    "features": [
+      "캐릭터명으로 검색해 스탯, 장비, 스킬 정보 조회",
+      "길드명으로 검색해 구성원, 길드랭킹, 활동 정보 확인",
+      "종합 랭킹 페이지에서 순위 실시간 조회",
+      "React-Query를 이용한 API 캐싱 및 로딩 상태 관리"
+    ],
+    "contribution": {
+      "design": [
+        "카드형 캐릭터 정보 UI 및 반응형 레이아웃 설계",
+        "길드/랭킹 페이지 구성을 통한 사용자 흐름 시각화"
+      ],
+      "development": [
+        "NEXON Open API 연동 및 데이터 비동기 처리 구현",
+        "React-Query를 이용한 상태 관리 및 API 요청 최적화",
+        "Tailwind 기반의 반응형 디자인 및 재사용 가능한 컴포넌트 개발"
+      ],
+      "optimization": [
+        "API 요청 캐싱 및 에러 핸들링 로직 개선",
+        "불필요한 렌더링 최소화로 검색 응답 속도 향상"
+      ]
+    },
+    "mainImg": "/images/maple_main.png",
+    "mockupImg": "/images/maple_mockup.png",
+    "year": 2025,
+    "state": "완료"
   }
 ]
