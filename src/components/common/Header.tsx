@@ -3,7 +3,6 @@ import Logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
-  padding:0 15px;
   position: fixed;
   top:0;
   left:0;
@@ -11,14 +10,16 @@ const Wrapper = styled.div`
   p {
     text-align: center;
   }
+  background: ${props => props.theme.colors.backgroundPrimary}
 `;
 
 const HeaderWrap = styled.div`
+  padding:0 15px;
   width: 100%;
   height:50px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid ${props => props.theme.component.border};
+  border-bottom: 1px solid ${props => props.theme.colors.border};
   img {
     width: 40px;
   }
@@ -28,6 +29,10 @@ const HeaderWrap = styled.div`
   }
   li {
     margin:0 15px;
+  }
+  span {
+    font-weight: bold;
+    color: ${props => props.theme.colors.textPrimary}
   }
 `;
 

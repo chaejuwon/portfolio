@@ -44,7 +44,8 @@ const ProjectNav = styled.ul`
   margin-bottom: 30px;
 `;
 const ProjectBtn = styled.li`
-  background-color: ${props => props.theme.palette.gray["800"]};
+  background-color: ${props => props.theme.colors.backgroundPrimary};
+  border: 1px solid ${props => props.theme.colors.contentBackgroundColor};
   border-radius: 10px;
   cursor: pointer;
   font-weight: 700;
@@ -54,7 +55,8 @@ const ProjectBtn = styled.li`
 const ProjectGridItem = styled(motion.li)`
   margin-bottom: 20px;
   padding: 15px;
-  background: ${props => props.theme.palette.gray["800"]};
+  background: ${props => props.theme.colors.backgroundPrimary};
+  border:1px solid ${props => props.theme.colors.backgroundSecondary};
   position: relative;
   overflow: hidden;
 `;
@@ -70,7 +72,7 @@ const InfoWrap = styled.div`
     margin: 10px 0;
   }
   span {
-    color: ${props => props.theme.palette.gray["200"]};
+    color: ${props => props.theme.colors.dark};
     display: inline-block;
     margin-right: 10px;
   }
@@ -84,11 +86,11 @@ const InfoTitleWrap = styled.div`
     font-weight: 600;
   }
   span {
-    color: ${props => props.theme.palette.white};
+    color: ${props => props.theme.colors.white};
   }
 `;
 const CategoryLabel = styled.div`
-  background-color: ${props => props.theme.palette.blue};
+  background-color: ${props => props.theme.colors.accent};
   font-size: 18px;
   left: 15%;
   position: absolute;
@@ -122,8 +124,8 @@ const DetailContent = styled(motion.div)`
   left:0;
   right:0;
   margin:0 auto;
-  background: ${props => props.theme.palette.white};
-  color: ${props => props.theme.palette.gray["900"]};
+  background: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.dark};
   padding: 50px;
   border-radius: 10px;
   font-family: 'pretendard', 'D2Coding', sans-serif;
@@ -147,7 +149,7 @@ const DetailTitle = styled.h2`
 const Hr = styled.div`
   width: 100%;
   height: 1px;
-  background: ${props => props.theme.palette.gray["200"]};
+  background: ${props => props.theme.colors.backgroundSecondary};
   margin: 25px 0;
 `;
 
@@ -172,8 +174,8 @@ const InfoTable = styled.table`
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 15px;
-  color: #333;
-  background-color: #fff;
+  color: ${props => props.theme.colors.dark};
+  background-color: ${props => props.theme.colors.white};
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   overflow: hidden;
@@ -215,7 +217,7 @@ const ContributionTitle = styled.h4`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.palette.gray["900"]};
+  color: ${({ theme }) => theme.colors.dark};
 `;
 const ContributionList = styled.ul`
   padding-left: 20px;
@@ -225,7 +227,7 @@ const ContributionItem = styled.li`
   margin-bottom: 6px;
   font-size: 15px;
   line-height: 1.6;
-  color: ${({ theme }) => theme.palette.gray["700"]};
+  color: ${({ theme }) => theme.colors.dark};
 `;
 const FeatureLists = styled.ul`
   padding-left: 20px;
@@ -235,13 +237,13 @@ const FeatureItem = styled.li`
   margin-bottom: 6px;
   font-size: 15px;
   line-height: 1.6;
-  color: ${({ theme }) => theme.palette.gray["700"]};
+  color: ${({ theme }) => theme.colors.dark};
 `;
 const CloseButton = styled.button`
   padding: 10px 0;
   width: 100%;
-  border:1px solid ${({ theme }) => theme.palette.gray["200"]};
-  background: ${({ theme }) => theme.palette.white};
+  border:1px solid ${({ theme }) => theme.colors.border};
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 5px;
   cursor: pointer;
 `;
@@ -251,7 +253,7 @@ const HoverWrap = styled(motion.div)`
   left:0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0, .8);
+  background-color: ${props => props.theme.colors.contentOpBgColor};
   z-index: 2;
 `;
 const HoverIconWrap = styled.div`

@@ -6,8 +6,7 @@ import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
-  background-color: #2d2d2d;
-
+  background-color: ${props => props.theme.colors.backgroundPrimary};
 `;
 const ToolBarItem = styled.span<IActive>`
   display: flex;
@@ -15,9 +14,11 @@ const ToolBarItem = styled.span<IActive>`
   justify-content: center;
   font-size: 18px;
   padding: 7px 15px;
-  background-color: ${(props) => props.active ? 'black' : '#2d2d2d'};
+  background-color: ${(props) => props.active ? props.theme.colors.menuColor : props.theme.colors.menuActiveColor};
   gap:5px;
-  border-right: 1px solid #1e1e1e;
+  border-top: 1px solid ${(props) => props.active ? props.theme.colors.accent : 'transparent'};
+  border-right: 1px solid ${props => props.theme.colors.border};
+  color: ${props => props.theme.colors.textPrimary};
 `;
 const Img = styled.img`
   width: 20px;

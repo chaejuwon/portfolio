@@ -9,14 +9,13 @@ const FooterWrap = styled.div`
   bottom:0;
   width: 100%;
   height: 30px;
-  background: ${props => props.theme.palette.gray[900]};
-  border-top: 1px solid ${props => props.theme.component.border}
+  background: ${props => props.theme.colors.backgroundPrimary};
+  border-top: 1px solid ${props => props.theme.colors.border}
 `;
 const FooterIconWrap = styled.ul`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 30px;
 `;
 const FooterIcon = styled.li`
   svg {
@@ -26,10 +25,10 @@ const FooterIcon = styled.li`
 const TerminalItem = styled.div`
   display: inline-block;
   padding: 5px 10px;
-  background: ${props => props.theme.palette.blue};
+  background: ${props => props.theme.colors.accent};
   transition: all .3s;
   &:hover {
-    background: #1970ab;
+    background: ${props => props.theme.colors.accentHover};
   }
 }
 `;

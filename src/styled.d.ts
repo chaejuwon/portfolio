@@ -2,33 +2,29 @@ import 'styled-components';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
-        palette: {
-            white: string;
-            gray: {
-                100: string;
-                200: string;
-                300: string;
-                400: string;
-                500: string;
-                600: string;
-                700: string;
-                800: string;
-                900: string;
-            },
-            blue: string;
-            red: string;
-            yellow: string;
+        colors: {
+            backgroundPrimary: string,
+            backgroundSecondary: string,
+            backgroundThird: string,
+            surface: string,
+            textPrimary: string,
+            textSecondary: string,
+            border: string,
+            accent: string,
+            accentHover: string,
+            danger: string,
+            warning: string,
+            success: string,
+            muted: string,
+            white: string,
+            dark: string,
+            tablePrimary: string,
+            tableSecondary: string,
+            menuColor: string,
+            menuActiveColor: string,
+            contentBackgroundColor: string,
+            contentTextColor: string,
+            contentOpBgColor: string,
         },
-        component: {
-            button: {
-                text: string;
-                background: string;
-            },
-            page: {
-                background: string;
-                text: string;
-            },
-            border: string;
-        }
     }
 }

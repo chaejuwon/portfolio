@@ -194,5 +194,34 @@
   "path": "coin",
   "git": "https://github.com/chaejuwon/coin",
   "homepage": "https://chaejuwon.github.io/coin"
+  },
+  {
+    "category": "\uD83D\uDCC2 SideProject",
+    "id": 9,
+    "title": "메이플 API",
+    "description": "React, React-Query, restfull, 메이플 api이용하여 검색기반 사이트 입니다.",
+    "tags": [
+      {
+        "id": 1,
+        "tag": "React"
+      },
+      {
+        "id": 2,
+        "tag": "React-Query"
+      },
+      {
+        "id": 3,
+        "tag": "Restfull api"
+      },
+      {
+        "id": 4,
+        "tag": "maplestory api"
+      }
+    ],
+    "img": "/images/maple_pc.png",
+    "year" : 2025,
+    "path": "maple",
+    "git": "https://github.com/chaejuwon/maplestory",
+    "homepage": "https://chaejuwon.github.io/maplestory"
   }
 ]

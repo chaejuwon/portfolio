@@ -18,7 +18,7 @@ const ProfileImg = styled.div`
   svg {
     margin-top:100px;
     font-size: 400px;
-    color: #252525;
+    color: ${props => props.theme.colors.contentTextColor};
   }
 `;
 const ProfileContent = styled.div`
@@ -30,14 +30,14 @@ const ProfileContent = styled.div`
   p {
     font-size:22px;
     line-height: 140%;
-    color: #686868;
+    color: ${props => props.theme.colors.contentTextColor};
     font-weight: bold;
     text-align: center;
   }
   button {
-    background: #292929;
+    background: ${props => props.theme.colors.contentBackgroundColor};
     padding:5px 8px;
-    color: #929292;
+    color: ${props => props.theme.colors.white};
     border: 0;
     cursor: pointer;
     font-size:16px;

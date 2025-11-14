@@ -1,5 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { theme } from "../theme";
+import { dark } from "../theme";
 import D2CodingTTF from '../assets/fonts/D2Coding/D2Coding.woff';
 import D2CodingTTF2 from '../assets/fonts/D2Coding/D2Coding.woff2';
 import D2CodingBold from '../assets/fonts/D2Coding/D2CodingBold.woff';
@@ -126,9 +126,9 @@ table {
 body {
     font-weight: 300;
     font-family: 'sourceSansPro', sans-serif;
-    color: ${props => props.theme.palette.white};
+    color: ${props => props.theme.colors.textPrimary};
     line-height: 1.2;
-    background-color: black;
+    background-color: ${props => props.theme.colors.backgroundPrimary};
     overflow: hidden;
 }
 
@@ -144,18 +144,18 @@ a {
 
 /* 스크롤바 트랙 (배경) */
 &::-webkit-scrollbar-track {
-     background: ${props => props.theme.palette.gray["300"]};
+     background: ${props => props.theme.colors.backgroundThird};
  }
 
 /* 스크롤바 핸들 */
 &::-webkit-scrollbar-thumb {
-     background: ${props => props.theme.palette.gray["800"]}; /* 예시 색상 */
+     background: ${props => props.theme.colors.backgroundPrimary}; /* 예시 색상 */
      border-radius: 4px; /* 둥근 모서리 */
  }
 
 /* 스크롤바 핸들 hover 시 */
 &::-webkit-scrollbar-thumb:hover {
-     background: ${props => props.theme.palette.gray["600"]};
+     background: ${props => props.theme.colors.backgroundSecondary};
  }
 ;
 `;

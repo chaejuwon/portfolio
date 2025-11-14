@@ -1,21 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { theme } from "./theme";
+import { ThemeProvider } from "styled-components";
+import { dark, light } from "./theme";
 import { GlobalStyle } from "../src/style/createGlobalStyle";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "./index.css";
+import { RecoilRoot, useRecoilValue } from "recoil";
+import { themeState } from "./atom";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
 const client = new QueryClient();
-root.render(
-  <QueryClientProvider client={client}>
-    <ThemeProvider theme={theme}>
+
+function RootWithTheme() {
+  const currentTheme = useRecoilValue(themeState);
+  const themeObject = currentTheme === "light" ? light : dark;
+
+  return (
+    <ThemeProvider theme={themeObject}>
       <GlobalStyle />
       <App />
     </ThemeProvider>
-  </QueryClientProvider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <RecoilRoot>
+    <QueryClientProvider client={client}>
+      <RootWithTheme />
+    </QueryClientProvider>
+  </RecoilRoot>
 );

@@ -19,7 +19,7 @@ const ContactWrap = styled.div`
 `;
 const ContactTitle = styled.h2`
   font-size: 28px;
-  color: ${props => props.theme.palette.blue}
+  color: ${props => props.theme.colors.accent}
 `;
 const ContactContent = styled.ul`
   margin-left:20px;
@@ -28,7 +28,7 @@ const ContactContent = styled.ul`
     padding: 10px 0;
   }
   a {
-    color: ${props => props.theme.palette.yellow}
+    color: ${props => props.theme.colors.warning}
   }
 `;
 const SendTitle = styled.h2`
@@ -65,8 +65,9 @@ const Field = styled.div`
   input {
     border: 0;
     padding: 15px;
-    background: #333;
-    color:#fff;
+    background: ${props => props.theme.colors.backgroundPrimary};
+    border: 1px solid ${props => props.theme.colors.border};
+    color: ${props => props.theme.colors.textPrimary};
     width: 100%;
     font-size:18px;
   }
@@ -74,8 +75,9 @@ const Field = styled.div`
     border: 0;
     height:300px;
     padding: 15px;
-    background: #333;
-    color:#fff;
+    background: ${props => props.theme.colors.backgroundPrimary};
+    border: 1px solid ${props => props.theme.colors.border};
+    color: ${props => props.theme.colors.textPrimary};
     width: 100%;
     font-size:18px;
   }
@@ -87,8 +89,9 @@ const Button = styled.button`
   padding: 10px 15px;
   font-size: 18px;
   width: 100%;
-  color: ${props => props.theme.component.button.text};
-  background-color: ${props=> props.theme.component.button.background};
+  background: ${props => props.theme.colors.backgroundPrimary};
+  border: 1px solid ${props => props.theme.colors.border};
+  color: ${props => props.theme.colors.textPrimary};
 `;
 interface useFormProps {
   email: string;

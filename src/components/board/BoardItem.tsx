@@ -40,29 +40,20 @@ const Table = styled.table`
   }
 
   th {
-    background: ${props => props.theme.palette.gray[600]};
-    color: #f0f0f0;
+    background: ${props => props.theme.colors.tablePrimary};
+    color: ${props => props.theme.colors.textPrimary};
     font-weight: 600;
     font-size: 14px;
-    border-bottom: 2px solid #444;
+    border-bottom: ${props => props.theme.colors.border};
     text-align: center;
   }
 
   td {
-    background: #1e1e1e;
-    color: #ddd;
+    background: ${props => props.theme.colors.tableSecondary};
+    color: ${props => props.theme.colors.textPrimary};
     font-size: 14px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     text-align: center;
-  }
-
-  tr:hover td {
-    background: #2f2f2f;
-    transition: background 0.2s ease-in-out;
-  }
-
-  tr:nth-child(even) td {
-    background: #252525;
   }
 `;
 const AddBoard = styled.div`
@@ -70,8 +61,8 @@ const AddBoard = styled.div`
   margin-top: 10px;
   button {
     border: 0;
-    background: ${props => props.theme.palette.blue};
-    color: ${props => props.theme.palette.white};
+    background: ${props => props.theme.colors.border};
+    color: ${props => props.theme.colors.textPrimary};
     padding:8px 16px;
     font-size: 14px;
     font-weight: bold;
@@ -151,7 +142,7 @@ const ModalWrap = styled.div`
 `;
 const ModalTitle = styled.h2`
   font-size: 40px;
-  color: ${props => props.theme.palette.gray[900]};
+  color: ${props => props.theme.colors.textSecondary};
   text-align: center;
   margin-bottom: 30px;
 `;

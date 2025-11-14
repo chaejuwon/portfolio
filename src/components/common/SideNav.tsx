@@ -7,16 +7,21 @@ import jsIcon from "../../assets/images/js-icon.svg";
 import cssIcon from "../../assets/images/css-icon.svg";
 import phpIcon from "../../assets/images/php-icon.svg";
 import { FaGear } from "react-icons/fa6";
+import { useSetRecoilState } from "recoil";
+import { themeState } from "../../atom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
-  border-right: 1px solid ${props => props.theme.component.border};
+  border-right: 1px solid ${props => props.theme.colors.border};
+  background: ${props => props.theme.colors.backgroundPrimary};
 `;
 const AsideWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid ${props => props.theme.component.border};
+  border-right: 1px solid ${props => props.theme.colors.border};
   height: calc(100vh - 80px);
 `;
 const LogoWrap = styled.ul`
@@ -39,15 +44,20 @@ const LogoItem = styled.li<{ $active:boolean }>`
     left:0;
     width: 2px;
     height: 100%;
-    background: ${props => props.theme.palette.blue};
+    background: ${props => props.theme.colors.accent};
+  }
+  svg {
+    color: ${props => props.theme.colors.textPrimary};
   }
 `;
 const IconWrap = styled.div`
+  position: relative;
   p {
     padding: 15px 20px;
     cursor: pointer;
   }
   svg {
+    color: ${props => props.theme.colors.textPrimary};
   }
 `;
 const MenuWrap = styled.ul`
@@ -61,12 +71,14 @@ const MenuItem = styled.li`
     align-items: center;
     gap: 5px;
     cursor:pointer;
+    color: ${props => props.theme.colors.textPrimary};
   }
   div {
     a {
       display: flex;
       align-items: center;
       margin:10px 0 10px 10px;
+      color: ${props => props.theme.colors.textPrimary};
     }
     img {
       width: 20px;
@@ -77,9 +89,55 @@ const MenuItem = styled.li`
       font-size: 18px;
     }
   }
+`;
+const ThemeWrap = styled(motion.ul)`
+  opacity: 0;
+  position: absolute;
+  left: 100%;
+  bottom: 10px;
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  background: ${props => props.theme.colors.contentBackgroundColor};
+  border: 1px solid ${props => props.theme.colors.border};
+  border-radius: 6px;
+`;
+const ThemeItem = styled.li`
+  padding: 10px 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .3s;
+  &:hover {
+    background: ${props => props.theme.colors.contentTextColor};
+  }
+`;
+const ThemeToggle = styled(motion.p)`
 
 `;
-
+const themeVariants = {
+  initial: {
+    opacity: 0,
+    transition: {
+      delay: 0.3,
+      during: 0.3
+    }
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 0.3,
+      during: 0.3
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      delay: 0.3,
+      during: 0.3
+    }
+  }
+}
 function Header() {
   const ImgArr = [
     { "id": 1,"link": "/home", "icon": <FaHouse fontSize={25} /> },
@@ -99,6 +157,14 @@ function Header() {
   ];
   const path = useLocation();
   const pathName = path.pathname.slice(1);
+
+  const setTheme = useSetRecoilState(themeState);
+
+  const [open, setOpen] = useState(false);
+  const toggleMenu = () => {
+    setOpen((prev) => !prev);
+    console.log(open);
+  }
   return (
     <Wrapper>
       <AsideWrap>
@@ -114,9 +180,17 @@ function Header() {
           })}
         </LogoWrap>
         <IconWrap>
-          <p>
+          <ThemeToggle onClick={toggleMenu}>
             <FaGear size={30} />
-          </p>
+          </ThemeToggle>
+          <AnimatePresence>
+            {open && (
+              <ThemeWrap variants={themeVariants} initial="initial" animate="animate" exit="exit">
+                <ThemeItem onClick={() => setTheme('light')}>🌞 Light Mode</ThemeItem>
+                <ThemeItem onClick={() => setTheme('dark')}>🌙 Dark Mode</ThemeItem>
+              </ThemeWrap>
+            )}
+          </AnimatePresence>
         </IconWrap>
       </AsideWrap>
 

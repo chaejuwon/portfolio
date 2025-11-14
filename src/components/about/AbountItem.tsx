@@ -21,12 +21,19 @@ const Wrapper = styled.div`
 const AboutItemWrapper = styled.div`
   margin: 2% 5%;
 `;
-
+const Li = styled.li`
+  background: ${props => props.theme.colors.backgroundPrimary};
+  border: 1px solid ${props => props.theme.colors.border};
+`;
+const TechStack = styled.div`
+  background: ${props => props.theme.colors.backgroundPrimary};
+  border: 1px solid ${props => props.theme.colors.border};
+`;
 function AboutItem() {
   return (
     <Wrapper>
       <AboutItemWrapper>
-        <section className="bg-[#0b0b0d] text-gray-200 py-20 flex flex-col items-center">
+        <section className="py-20 flex flex-col items-center">
           <div className="max-w-5xl w-full">
             {/* 🧑‍💻 Profile Section */}
             <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
@@ -41,7 +48,7 @@ function AboutItem() {
                   <span className="text-indigo-400">프론트엔드 개발자,</span>{" "}
                   <span className="text-indigo-300">채주원</span>입니다.
                 </h1>
-                <p className="text-gray-300 leading-relaxed text-lg">
+                <p className="leading-relaxed text-lg">
                   사용자 중심의 인터랙티브 웹 서비스를 설계하고 구현하는 프론트엔드 개발자입니다.
                   새로운 기술을 배우는 것을 좋아하며, 코드와 디자인이 만나 만들어내는 경험에 가치를 둡니다.
                   빠르게 변화하는 기술 트렌드 속에서도 <b>기본에 충실한 개발</b>을 추구합니다.
@@ -59,38 +66,38 @@ function AboutItem() {
                 MY KEYWORDS
               </h2>
               <ul className="grid md:grid-cols-4 gap-6 text-center">
-                <li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
+                <Li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
                   <div className="text-lg font-semibold mb-2">
                     <span className="text-indigo-300 mr-2">01</span>CREATIVE
                   </div>
                   <p className="text-gray-400 text-sm">
                     새로운 시각에서 문제를 바라보고 창의적인 해결책을 제시하는 것을 즐깁니다.
                   </p>
-                </li>
-                <li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
+                </Li>
+                <Li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
                   <div className="text-lg font-semibold mb-2">
                     <span className="text-indigo-300 mr-2">02</span>CURIOUS
                   </div>
                   <p className="text-gray-400 text-sm">
                     낯선 기술에도 호기심을 가지고 끝까지 파고드는 성격입니다.
                   </p>
-                </li>
-                <li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
+                </Li>
+                <Li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
                   <div className="text-lg font-semibold mb-2">
                     <span className="text-indigo-300 mr-2">03</span>COLLABORATIVE
                   </div>
                   <p className="text-gray-400 text-sm">
                     열린 마음으로 소통하며, 팀워크를 통해 시너지를 내는 것을 중요하게 생각합니다.
                   </p>
-                </li>
-                <li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
+                </Li>
+                <Li className="bg-[#111113] rounded-2xl p-6 border border-gray-800 hover:border-indigo-400 transition">
                   <div className="text-lg font-semibold mb-2">
                     <span className="text-indigo-300 mr-2">04</span>TENACIOUS
                   </div>
                   <p className="text-gray-400 text-sm">
                     한번 시작한 일은 끝까지 해내는 집요함으로 프로젝트를 완성합니다.
                   </p>
-                </li>
+                </Li>
               </ul>
             </div>
 
@@ -98,9 +105,9 @@ function AboutItem() {
             <div className="mb-16">
               <h2 className="text-2xl font-semibold text-indigo-400 mb-6">CAREER</h2>
               <ul className="space-y-4">
-                <li className="bg-[#111113] p-6 rounded-2xl border border-gray-800">
+                <Li className="p-6 rounded-2xl">
                   <div className="flex flex-col md:flex-row md:items-center justify-between">
-                    <h3 className="text-xl font-semibold text-white">
+                    <h3 className="text-xl font-semibold">
                       스펙토리
                     </h3>
                     <span className="text-gray-400 text-sm">2021.10 - 2026.01</span>
@@ -108,7 +115,7 @@ function AboutItem() {
                   <p className="text-gray-400 mt-2">
                     Twig 기반의 컴포넌트 구조 설계를 통해 유지보수성과 재사용성을 높인 프런트엔드 개발을 수행하였습니다.
                   </p>
-                </li>
+                </Li>
               </ul>
             </div>
 
@@ -116,14 +123,14 @@ function AboutItem() {
             <div className="mb-16">
               <h2 className="text-2xl font-semibold text-indigo-400 mb-6">EDUCATION</h2>
               <ul className="space-y-4">
-                <li className="bg-[#111113] p-6 rounded-2xl border border-gray-800">
+                <Li className="p-6 rounded-2xl">
                   <div className="flex flex-col md:flex-row md:items-center justify-between">
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-lg font-semibold">
                       신구대학교 <span className="text-gray-400">- 웹IT</span>
                     </h3>
                     <span className="text-gray-400 text-sm">2016.02 - 2021.02</span>
                   </div>
-                </li>
+                </Li>
               </ul>
             </div>
 
@@ -136,7 +143,7 @@ function AboutItem() {
             </span>
               </h2>
 
-              <h3 className="text-xl font-semibold mb-4 text-white">Frontend</h3>
+              <h3 className="text-xl font-semibold mb-4">Frontend</h3>
               <div className="flex flex-wrap gap-4 mb-8">
                 {[
                   { src: react, name: "React", desc: "컴포넌트 기반 아키텍처로 재사용성과 유지보수성을 높인 UI 설계 경험" },
@@ -146,17 +153,17 @@ function AboutItem() {
                   { src: typescript, name: "TypeScript", desc: "정적 타입 시스템 기반으로 안정적인 컴포넌트 개발 및 오류 예방" },
                   { src: javascript, name: "JavaScript", desc: "이벤트 중심 로직과 비동기 처리로 사용자 경험을 개선한 인터랙션 구현" },
                 ].map((tech, idx) => (
-                  <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">
+                  <TechStack key={idx} className="group relative p-4 rounded-xl transition">
                     <img src={tech.src} alt={tech.name} className="w-24 h-24 mx-auto mb-2" />
-                    <h4 className="text-center text-sm text-white font-medium">{tech.name}</h4>
-                    <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">
+                    <h4 className="text-center text-sm font-medium">{tech.name}</h4>
+                    <TechStack className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-xs p-2 rounded-lg w-48 text-center">
                       {tech.desc}
-                    </p>
-                  </div>
+                    </TechStack>
+                  </TechStack>
                 ))}
               </div>
 
-              <h3 className="text-xl font-semibold mb-4 text-white">Backend & Tools</h3>
+              <h3 className="text-xl font-semibold mb-4">Backend & Tools</h3>
               <div className="flex flex-wrap gap-4">
                 {[
                   { src: node, name: "Node.js", desc: "Express 기반의 RESTful API 서버 구축 및 간단한 백엔드 로직 구현 경험" },
@@ -165,13 +172,13 @@ function AboutItem() {
                   { src: jenkins, name: "Jenkins", desc: "간단한 빌드 자동화 및 CI/CD 파이프라인 구성 이해" },
                   { src: ai, name: "Illustrator", desc: "디자인 시안 수정 및 개발용 벡터 자산 제작 협업 경험" },
                 ].map((tool, idx) => (
-                  <div key={idx} className="group relative bg-[#111113] p-4 rounded-xl border border-gray-800 hover:border-indigo-400 transition">
+                  <TechStack key={idx} className="group relative p-4 rounded-xl border transition">
                     <img src={tool.src} alt={tool.name} className="w-24 h-24 mx-auto mb-2" />
-                    <h4 className="text-center text-sm text-white font-medium">{tool.name}</h4>
-                    <p className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-gray-300 text-xs p-2 rounded-lg w-48 text-center">
+                    <h4 className="text-center text-sm font-medium">{tool.name}</h4>
+                    <TechStack className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-xs p-2 rounded-lg w-48 text-center">
                       {tool.desc}
-                    </p>
-                  </div>
+                    </TechStack>
+                  </TechStack>
                 ))}
               </div>
             </div>
