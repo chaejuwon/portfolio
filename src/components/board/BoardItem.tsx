@@ -6,6 +6,7 @@ import BoardIcon from "../../assets/images/board.svg";
 import { DbProps, myDb, myDbAdd } from "../../api";
 import { Link } from "react-router-dom";
 import { useMatch, useNavigate } from "react-router-dom";
+import { breakpoints } from "../../media";
 
 
 const Wrapper = styled.div`
@@ -16,6 +17,9 @@ const Wrapper = styled.div`
 const BoardWrapper = styled.div`
   margin: 2% 5%;
   position: relative;
+  ${ breakpoints.md } {
+    margin: 5%;
+  }
 `;
 const BoardTitle = styled.h2`
   font-size: 40px;

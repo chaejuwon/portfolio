@@ -11,6 +11,7 @@ import figma from "../../assets/images/figma.png";
 import git from "../../assets/images/git.png";
 import jenkins from "../../assets/images/jenkins.png";
 import node from "../../assets/images/node.png";
+import { breakpoints } from "../../media";
 const Wrapper = styled.div`
   overflow-y: auto;
   font-family: 'D2Coding', 'Fira Code', monospace;
@@ -20,6 +21,9 @@ const Wrapper = styled.div`
 `;
 const AboutItemWrapper = styled.div`
   margin: 2% 5%;
+  ${ breakpoints.md } {
+    margin: 5%;
+  }
 `;
 const Li = styled.li`
   background: ${props => props.theme.colors.backgroundPrimary};

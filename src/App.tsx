@@ -10,12 +10,16 @@ import styled from "styled-components";
 import ToolBar from "./components/common/ToolBar";
 import Footer from "./components/common/Footer";
 import Board from "./Routes/Board";
+import { breakpoints } from "./media";
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 8.5fr;
   margin-top:50px;
   height: calc(100vh - 80px);
+  ${ breakpoints.md }{
+    grid-template-columns: 1fr 9fr;
+  }
 `;
 const ContentWrap = styled.div`
   display: flex;

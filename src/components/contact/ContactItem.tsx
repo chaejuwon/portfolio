@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
+import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
   overflow-y: scroll;
@@ -11,6 +12,9 @@ const Wrapper = styled.div`
 const ContactWrapper = styled.div`
   margin: 2% 5%;
   font-family: 'D2Coding', sans-serif;
+  ${ breakpoints.md } {
+    margin: 5%;
+  }
 `;
 const ContactWrap = styled.div`
   display: block;
@@ -50,10 +54,16 @@ const FormWrap = styled.div`
 const Info = styled.div`
   width: 50%;
   box-sizing: border-box;
+  ${ breakpoints.md } {
+    width: 100%;
+  }
 `;
 const Content = styled.div`
   width: 50%;
   box-sizing: border-box;
+  ${ breakpoints.md } {
+    width: 100%;
+  }
 `;
 const Field = styled.div`
   padding:10px;

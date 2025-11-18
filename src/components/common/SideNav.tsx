@@ -11,6 +11,7 @@ import { useSetRecoilState } from "recoil";
 import { themeState } from "../../atom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
   display: flex;
@@ -62,6 +63,9 @@ const IconWrap = styled.div`
 `;
 const MenuWrap = styled.ul`
   padding:20px;
+  ${ breakpoints.md } {
+    display: none;
+  }
 `;
 const MenuItem = styled.li`
   h3 {

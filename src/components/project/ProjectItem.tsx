@@ -15,6 +15,8 @@ import { FaHome } from "react-icons/fa";
 import { IoIosLink } from "react-icons/io";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import { breakpoints } from "../../media";
+
 const Wrapper = styled.div`
   overflow-y: scroll;
   font-family: 'D2Coding', sans-serif;
@@ -22,11 +24,17 @@ const Wrapper = styled.div`
 `;
 const ProjectWrapper = styled.div`
   margin: 2% 5%;
+  ${ breakpoints.md } {
+    margin: 5%;
+  }
 `;
 const ProjectGrid = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
+  ${ breakpoints.md } {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 const ProjectTitle = styled.h2`
   font-size:40px;
@@ -39,9 +47,14 @@ const ProjectTitle = styled.h2`
   }
 `;
 const ProjectNav = styled.ul`
-  display: flex;
+  display: inline-grid;
   gap: 10px;
   margin-bottom: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  ${ breakpoints.md } {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 `;
 const ProjectBtn = styled.li`
   background-color: ${props => props.theme.colors.backgroundPrimary};
@@ -51,6 +64,10 @@ const ProjectBtn = styled.li`
   font-weight: 700;
   padding: 12px 24px;
   transition: all .3s ease-in-out;
+  &.active {
+    background-color: ${props => props.theme.colors.backgroundThird};
+    color: ${props => props.theme.colors.textPrimary};
+  }
 `;
 const ProjectGridItem = styled(motion.li)`
   margin-bottom: 20px;
@@ -127,9 +144,11 @@ const DetailContent = styled(motion.div)`
   background: ${props => props.theme.colors.white};
   color: ${props => props.theme.colors.dark};
   padding: 50px;
-  border-radius: 10px;
   font-family: 'pretendard', 'D2Coding', sans-serif;
   overflow: scroll;
+  ${ breakpoints.md } {
+    width:90%;
+  }
 `;
 const DetailInfo = styled.div`
   display: flex;
@@ -144,6 +163,9 @@ const DetailTitle = styled.h2`
   span {
     font-size: 20px;
     font-weight: 300;
+  }
+  ${ breakpoints.md } {
+    font-size:24px;
   }
 `;
 const Hr = styled.div`
@@ -367,153 +389,155 @@ function ProjectItem() {
   ]
   // 2. 메뉴 클릭 시 해당 카테고리와 react-query category를 비교해서 맞는것만 노출
   const [category, setCategory] = useState("ALL");
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
   const onClickNav = (category: string) => {
+    setSelectedCategory(category);
     setCategory(category);
   }
   const filteredData = listData?.filter((project) => {
     return category === "ALL" || project.category === category;
   });
   return (
-      <Wrapper>
-        <ProjectWrapper>
-          <ProjectTitle><img src={projectIcon} />My Project</ProjectTitle>
-          <ProjectNav>
-            {navCategory.map((item, index) => (
-              <ProjectBtn key={index} onClick={() => onClickNav(item.category)}>{item.category}</ProjectBtn>
-            ))}
-          </ProjectNav>
-          <ProjectGrid>
-            {listLoading ? (
-              <div className="flex justify-center items-center w-full py-10">
-                <div className="w-8 h-8 border-4 border-gray-300 border-t-indigo-500 rounded-full animate-spin"></div>
-              </div>
-            ) : (
-              filteredData?.map((project) => (
-                <ProjectGridItem key={project.id} >
-                  <Thumbnail src={`${process.env.PUBLIC_URL}${project.img}`} alt={project.title} />
-                  <InfoWrap>
-                    <InfoTitleWrap>
-                      <h2>{project.title}</h2>
-                      <span>{project.year}</span>
-                    </InfoTitleWrap>
-                    <p>{project.description}</p>
-                    {project.tags.map((item) => (
-                      <span key={item.id}>#{item.tag}</span>
-                    ))}
-                  </InfoWrap>
-                  <CategoryLabel>{project.category}</CategoryLabel>
-                  <HoverWrap variants={hoverVariants} initial="initial" whileHover="animate" exit="exit">
-                    <HoverIconWrap>
-                      <Link to={project.git} target="_blank" data-tooltip-id="git-tip" data-tooltip-content="GitHub">
-                        <FaGithub fontSize={30} />
-                        <Tooltip id="git-tip" place="top" />
-                      </Link>
-                      <Link to={project.homepage} target="_blank" data-tooltip-id="home-tip" data-tooltip-content="Homepage">
-                        <FaHome fontSize={30} />
-                        <Tooltip id="home-tip" place="top" />
-                      </Link>
-                      <Link to="javascript:">
-                        <IoIosLink fontSize={30} onClick={() => onDetail(project.category, project.id)} data-tooltip-id="modal-tip" data-tooltip-content="Modal" />
-                        <Tooltip id="modal-tip" place="top" />
-                      </Link>
-                    </HoverIconWrap>
-                  </HoverWrap>
-                </ProjectGridItem>
-              ))
-            )}
-          </ProjectGrid>
-          <AnimatePresence>
-            {bigMatch ? (
-              <>
-                {detailLoading ? "loading..." : (
-                  <DetailWrap>
-                    <Overlay onClick={leaveDetail} variants={overlayVariants} initial="initial" animate="animate" exit="exit"></Overlay>
-                    <DetailContent variants={detailVariants} initial="initial" animate="animate" exit="exit">
-                      <DetailTitle>
-                        {detailData?.title}
-                        <span>{detailData?.year}</span>
-                      </DetailTitle>
-                      <Hr />
-                      <DetailInfo>
-                        <InfoContainer>
-                          <MainImg src={`${process.env.PUBLIC_URL}${detailData?.mainImg}`} />
-                        </InfoContainer>
-                        <InfoContainer>
-                          <InfoTitle>프로젝트 개요</InfoTitle>
-                          <InfoContent>{detailData?.description}</InfoContent>
-                        </InfoContainer>
-                        <InfoContainer>
-                          <InfoTitle>사용 기술 스택</InfoTitle>
-                          <InfoTable>
-                            <thead>
+    <Wrapper>
+      <ProjectWrapper>
+        <ProjectTitle><img src={projectIcon} />My Project</ProjectTitle>
+        <ProjectNav>
+          {navCategory.map((item, index) => (
+            <ProjectBtn key={index} className={item.category === selectedCategory ? "active" : ""} onClick={() => onClickNav(item.category)}>{item.category}</ProjectBtn>
+          ))}
+        </ProjectNav>
+        <ProjectGrid>
+          {listLoading ? (
+            <div className="flex justify-center items-center w-full py-10">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-indigo-500 rounded-full animate-spin"></div>
+            </div>
+          ) : (
+            filteredData?.map((project) => (
+              <ProjectGridItem key={project.id} >
+                <Thumbnail src={`${process.env.PUBLIC_URL}${project.img}`} alt={project.title} />
+                <InfoWrap>
+                  <InfoTitleWrap>
+                    <h2>{project.title}</h2>
+                    <span>{project.year}</span>
+                  </InfoTitleWrap>
+                  <p>{project.description}</p>
+                  {project.tags.map((item) => (
+                    <span key={item.id}>#{item.tag}</span>
+                  ))}
+                </InfoWrap>
+                <CategoryLabel>{project.category}</CategoryLabel>
+                <HoverWrap variants={hoverVariants} initial="initial" whileHover="animate" exit="exit">
+                  <HoverIconWrap>
+                    <Link to={project.git} target="_blank" data-tooltip-id="git-tip" data-tooltip-content="GitHub">
+                      <FaGithub fontSize={30} />
+                      <Tooltip id="git-tip" place="top" />
+                    </Link>
+                    <Link to={project.homepage} target="_blank" data-tooltip-id="home-tip" data-tooltip-content="Homepage">
+                      <FaHome fontSize={30} />
+                      <Tooltip id="home-tip" place="top" />
+                    </Link>
+                    <Link to="javascript:">
+                      <IoIosLink fontSize={30} onClick={() => onDetail(project.category, project.id)} data-tooltip-id="modal-tip" data-tooltip-content="Modal" />
+                      <Tooltip id="modal-tip" place="top" />
+                    </Link>
+                  </HoverIconWrap>
+                </HoverWrap>
+              </ProjectGridItem>
+            ))
+          )}
+        </ProjectGrid>
+        <AnimatePresence>
+          {bigMatch ? (
+            <>
+              {detailLoading ? "loading..." : (
+                <DetailWrap>
+                  <Overlay onClick={leaveDetail} variants={overlayVariants} initial="initial" animate="animate" exit="exit"></Overlay>
+                  <DetailContent variants={detailVariants} initial="initial" animate="animate" exit="exit">
+                    <DetailTitle>
+                      {detailData?.title}
+                      <span>{detailData?.year}</span>
+                    </DetailTitle>
+                    <Hr />
+                    <DetailInfo>
+                      <InfoContainer>
+                        <MainImg src={`${process.env.PUBLIC_URL}${detailData?.mainImg}`} />
+                      </InfoContainer>
+                      <InfoContainer>
+                        <InfoTitle>프로젝트 개요</InfoTitle>
+                        <InfoContent>{detailData?.description}</InfoContent>
+                      </InfoContainer>
+                      <InfoContainer>
+                        <InfoTitle>사용 기술 스택</InfoTitle>
+                        <InfoTable>
+                          <thead>
+                          <tr>
+                            <th>Type</th>
+                            <th>Stack</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <th>FrontEnd</th>
+                            <th>{detailData?.tech_stack.frontend.join(', ')}</th>
+                          </tr>
+                          {detailData?.tech_stack.backend ? (
                             <tr>
-                              <th>Type</th>
-                              <th>Stack</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                              <th>BackEnd</th>
+                              <th>{detailData?.tech_stack.backend.join(', ')}</th>
+                            </tr>) : null
+                          }
+                          {detailData?.tech_stack.database ? (
                             <tr>
-                              <th>FrontEnd</th>
-                              <th>{detailData?.tech_stack.frontend.join(', ')}</th>
-                            </tr>
-                            {detailData?.tech_stack.backend ? (
-                              <tr>
-                                <th>BackEnd</th>
-                                <th>{detailData?.tech_stack.backend.join(', ')}</th>
-                              </tr>) : null
-                            }
-                            {detailData?.tech_stack.database ? (
-                              <tr>
-                                <th>Database</th>
-                                <th>{detailData?.tech_stack.database.join(', ')}</th>
-                              </tr>) : null
-                            }
-                            {detailData?.tech_stack.environment ? (
-                              <tr>
-                                <th>Environment</th>
-                                <th>{detailData?.tech_stack.environment.join(', ')}</th>
-                              </tr>) : null
-                            }
-                            </tbody>
-                          </InfoTable>
-                        </InfoContainer>
-                        <InfoContainer>
-                          <InfoTitle>주요 역할 및 기여도</InfoTitle>
-                          <ContributionWrap>
-                            {Object.entries(detailData?.contribution || {}).map(([category, items]) => (
-                              <ContributionSection key={category}>
-                                <ContributionTitle>{labelMap[category]}</ContributionTitle>
-                                <ContributionList>
-                                  {items.map((item, index) => (
-                                    <ContributionItem key={index}>{item}</ContributionItem>
-                                  ))}
-                                </ContributionList>
-                              </ContributionSection>
-                            ))}
-                          </ContributionWrap>
-                        </InfoContainer>
-                        <InfoContainer>
-                          <InfoTitle>주요 기능</InfoTitle>
-                          <FeatureLists>
-                            {detailData?.features.map((item, index) => (
-                              <FeatureItem key={index}>
-                                {item}
-                              </FeatureItem>
-                            ))}
-                          </FeatureLists>
-                        </InfoContainer>
-                        <InfoContainer>
-                          <MainImg src={`${process.env.PUBLIC_URL}${detailData?.mockupImg}`} />
-                        </InfoContainer>
-                        <CloseButton onClick={leaveDetail}>닫기</CloseButton>
-                      </DetailInfo>
-                    </DetailContent>
-                  </DetailWrap>
-                )}
-              </>
-            ) : null}
-          </AnimatePresence>
-        </ProjectWrapper>
+                              <th>Database</th>
+                              <th>{detailData?.tech_stack.database.join(', ')}</th>
+                            </tr>) : null
+                          }
+                          {detailData?.tech_stack.environment ? (
+                            <tr>
+                              <th>Environment</th>
+                              <th>{detailData?.tech_stack.environment.join(', ')}</th>
+                            </tr>) : null
+                          }
+                          </tbody>
+                        </InfoTable>
+                      </InfoContainer>
+                      <InfoContainer>
+                        <InfoTitle>주요 역할 및 기여도</InfoTitle>
+                        <ContributionWrap>
+                          {Object.entries(detailData?.contribution || {}).map(([category, items]) => (
+                            <ContributionSection key={category}>
+                              <ContributionTitle>{labelMap[category]}</ContributionTitle>
+                              <ContributionList>
+                                {items.map((item, index) => (
+                                  <ContributionItem key={index}>{item}</ContributionItem>
+                                ))}
+                              </ContributionList>
+                            </ContributionSection>
+                          ))}
+                        </ContributionWrap>
+                      </InfoContainer>
+                      <InfoContainer>
+                        <InfoTitle>주요 기능</InfoTitle>
+                        <FeatureLists>
+                          {detailData?.features.map((item, index) => (
+                            <FeatureItem key={index}>
+                              {item}
+                            </FeatureItem>
+                          ))}
+                        </FeatureLists>
+                      </InfoContainer>
+                      <InfoContainer>
+                        <MainImg src={`${process.env.PUBLIC_URL}${detailData?.mockupImg}`} />
+                      </InfoContainer>
+                      <CloseButton onClick={leaveDetail}>닫기</CloseButton>
+                    </DetailInfo>
+                  </DetailContent>
+                </DetailWrap>
+              )}
+            </>
+          ) : null}
+        </AnimatePresence>
+      </ProjectWrapper>
     </Wrapper>
       )
     }
