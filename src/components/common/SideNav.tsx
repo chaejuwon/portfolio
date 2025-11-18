@@ -14,6 +14,8 @@ import { useState } from "react";
 import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
+  position: relative;
+  z-index: 2;
   display: flex;
   border-right: 1px solid ${props => props.theme.colors.border};
   background: ${props => props.theme.colors.backgroundPrimary};
@@ -97,6 +99,7 @@ const MenuItem = styled.li`
 const ThemeWrap = styled(motion.ul)`
   opacity: 0;
   position: absolute;
+  z-index: 100;
   left: 100%;
   bottom: 10px;
   margin-left: 8px;

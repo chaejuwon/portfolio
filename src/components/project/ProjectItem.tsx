@@ -72,6 +72,11 @@ const ProjectBtn = styled.li`
     background-color: ${props => props.theme.colors.backgroundThird};
     color: ${props => props.theme.colors.textPrimary};
   }
+  ${ breakpoints.md } {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 18px;
+  }
 `;
 
 const DetailWrap = styled.div`
@@ -80,7 +85,7 @@ const DetailWrap = styled.div`
   left:0;
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 2;
 `;
 const Overlay = styled(motion.div)`
   background: rgba(0,0,0, .8);
@@ -389,25 +394,25 @@ function ProjectItem() {
                           </thead>
                           <tbody>
                           <tr>
-                            <th>FrontEnd</th>
-                            <th>{detailData?.tech_stack.frontend.join(', ')}</th>
+                            <td>FrontEnd</td>
+                            <td>{detailData?.tech_stack.frontend.join(', ')}</td>
                           </tr>
                           {detailData?.tech_stack.backend ? (
                             <tr>
-                              <th>BackEnd</th>
-                              <th>{detailData?.tech_stack.backend.join(', ')}</th>
+                              <td>BackEnd</td>
+                              <td>{detailData?.tech_stack.backend.join(', ')}</td>
                             </tr>) : null
                           }
                           {detailData?.tech_stack.database ? (
                             <tr>
-                              <th>Database</th>
-                              <th>{detailData?.tech_stack.database.join(', ')}</th>
+                              <td>Database</td>
+                              <td>{detailData?.tech_stack.database.join(', ')}</td>
                             </tr>) : null
                           }
                           {detailData?.tech_stack.environment ? (
                             <tr>
-                              <th>Environment</th>
-                              <th>{detailData?.tech_stack.environment.join(', ')}</th>
+                              <td>Environment</td>
+                              <td>{detailData?.tech_stack.environment.join(', ')}</td>
                             </tr>) : null
                           }
                           </tbody>

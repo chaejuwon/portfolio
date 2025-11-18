@@ -34,7 +34,7 @@ const InfoWrap = styled.div`
     margin: 10px 0;
   }
   span {
-    color: ${props => props.theme.colors.dark};
+    color: ${props => props.theme.colors.textSecondary};
     display: inline-block;
     margin-right: 10px;
   }
@@ -46,9 +46,15 @@ const InfoTitleWrap = styled.div`
   h2 {
     font-size: 20px;
     font-weight: 600;
+    ${ breakpoints.md } {
+      font-size: 16px;
+    }
   }
-  span {
+  small {
     color: ${props => props.theme.colors.white};
+    ${ breakpoints.md } {
+      font-size: 14px;
+    }
   }
 `;
 const CategoryLabel = styled.div`
@@ -103,7 +109,7 @@ function ProjectCardItem({ project, isMobile, onDetail }: ProjectCardItemProps) 
       <InfoWrap>
         <InfoTitleWrap>
           <h2>{project.title}</h2>
-          <span>{project.year}</span>
+          <small>{project.year}</small>
         </InfoTitleWrap>
         <p>{project.description}</p>
         {project.tags.map((item) => (
