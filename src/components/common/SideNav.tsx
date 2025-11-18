@@ -15,7 +15,7 @@ import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   border-right: 1px solid ${props => props.theme.colors.border};
   background: ${props => props.theme.colors.backgroundPrimary};

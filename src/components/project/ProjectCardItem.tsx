@@ -75,7 +75,7 @@ const HoverWrap = styled(motion.div)`
   width: 100%;
   height: 100%;
   background-color: ${props => props.theme.colors.contentOpBgColor};
-  z-index: 2;
+  z-index: 1;
 `;
 const HoverIconWrap = styled.div`
   height: 100%;
