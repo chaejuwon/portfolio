@@ -2,9 +2,13 @@ import styled from "styled-components";
 import { TypeAnimation } from "react-type-animation";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
-  
+  margin: 2% 5%;
+  ${ breakpoints.md } {
+    margin: 5%;
+  }
 `;
 const ProfileWrap = styled.div`
   display: grid;
@@ -19,6 +23,10 @@ const ProfileImg = styled.div`
     margin-top:100px;
     font-size: 400px;
     color: ${props => props.theme.colors.contentTextColor};
+
+    ${ breakpoints.md } {
+      font-size: 250px;
+    }
   }
 `;
 const ProfileContent = styled.div`
@@ -27,12 +35,18 @@ const ProfileContent = styled.div`
   display: grid;
   gap:15px;
   grid-template-columns: repeat(2, 1fr);
+  ${ breakpoints.md } {
+    grid-template-columns: repeat(1, 1fr);
+  }
   p {
     font-size:22px;
     line-height: 140%;
     color: ${props => props.theme.colors.contentTextColor};
     font-weight: bold;
     text-align: center;
+    ${ breakpoints.md } {
+      font-size:18px;
+    }
   }
   button {
     background: ${props => props.theme.colors.contentBackgroundColor};

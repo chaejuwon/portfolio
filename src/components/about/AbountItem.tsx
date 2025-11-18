@@ -160,7 +160,7 @@ function AboutItem() {
                   <TechStack key={idx} className="group relative p-4 rounded-xl transition">
                     <img src={tech.src} alt={tech.name} className="w-24 h-24 mx-auto mb-2" />
                     <h4 className="text-center text-sm font-medium">{tech.name}</h4>
-                    <TechStack className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-xs p-2 rounded-lg w-48 text-center">
+                    <TechStack className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-xs p-2 rounded-lg w-48 text-center z-10">
                       {tech.desc}
                     </TechStack>
                   </TechStack>
@@ -179,7 +179,7 @@ function AboutItem() {
                   <TechStack key={idx} className="group relative p-4 rounded-xl border transition">
                     <img src={tool.src} alt={tool.name} className="w-24 h-24 mx-auto mb-2" />
                     <h4 className="text-center text-sm font-medium">{tool.name}</h4>
-                    <TechStack className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-xs p-2 rounded-lg w-48 text-center">
+                    <TechStack className="absolute left-1/2 -translate-x-1/2 bottom-[-70px] opacity-0 group-hover:opacity-100 transition bg-gray-900 text-xs p-2 rounded-lg w-48 text-center z-10">
                       {tool.desc}
                     </TechStack>
                   </TechStack>

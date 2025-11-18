@@ -132,8 +132,6 @@ function ProjectCardItem({ project, isMobile, onDetail }: ProjectCardItemProps) 
         </HoverIconWrap>
       </HoverWrap>
     </ProjectGridItem>
-
-
   )
 }
 export default ProjectCardItem;

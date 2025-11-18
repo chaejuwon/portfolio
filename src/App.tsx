@@ -24,6 +24,7 @@ const Wrapper = styled.div`
 const ContentWrap = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 0;
 `;
 function App() {
   return (

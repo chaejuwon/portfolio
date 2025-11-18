@@ -7,19 +7,24 @@ import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
   overflow-x: auto;
   white-space: nowrap;
-  background-color: ${props => props.theme.colors.backgroundPrimary};
-  ${breakpoints.md} {
+  flex-direction: row;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
     display: none;
   }
+  background-color: ${props => props.theme.colors.backgroundPrimary};
 `;
 const ToolBarItem = styled.span<IActive>`
   display: flex;
-  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
+  cursor: pointer;
   font-size: 18px;
   padding: 7px 15px;
   background-color: ${(props) => props.active ? props.theme.colors.menuColor : props.theme.colors.menuActiveColor};
@@ -27,9 +32,6 @@ const ToolBarItem = styled.span<IActive>`
   border-top: 1px solid ${(props) => props.active ? props.theme.colors.accent : 'transparent'};
   border-right: 1px solid ${props => props.theme.colors.border};
   color: ${props => props.theme.colors.textPrimary};
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-  cursor: pointer;
-
 `;
 const Img = styled.img`
   width: 20px;
