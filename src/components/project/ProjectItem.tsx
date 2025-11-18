@@ -403,6 +403,7 @@ function ProjectItem() {
 
   // 모바일 확인
   const [isMobile, setIsMobile] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const check = window.matchMedia("(max-width: 768px)").matches;
@@ -439,7 +440,8 @@ function ProjectItem() {
                 <CategoryLabel>{project.category}</CategoryLabel>
                 <HoverWrap variants={hoverVariants} initial="initial"
                            whileHover={!isMobile ? "animate" : undefined}
-                           whileTap={isMobile ? "animate" : undefined}
+                           animate={isMobile && open ? "animate" : "initial"}
+                           onClick={() => isMobile && setOpen(prev => !prev)}
                            exit="exit">
                   <HoverIconWrap>
                     <Link to={project.git} target="_blank" data-tooltip-id="git-tip" data-tooltip-content="GitHub">
