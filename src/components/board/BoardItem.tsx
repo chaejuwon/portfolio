@@ -35,9 +35,13 @@ const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   th, td {
     padding: 12px 16px;
     text-align: left;
@@ -58,6 +62,7 @@ const Table = styled.table`
     font-size: 14px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
     text-align: center;
+    white-space: nowrap;
   }
 `;
 const AddBoard = styled.div`
@@ -104,6 +109,9 @@ const ModalWrap = styled.div`
   border-radius: 10px;
   font-family: 'pretendard', 'D2Coding', sans-serif;
   overflow: hidden;
+  ${ breakpoints.md } {
+    width: 90%;
+  }
   form {
     display: flex;
     flex-direction: column;
