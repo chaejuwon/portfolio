@@ -3,13 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import reactIcon from "../../assets/images/react-icon.svg";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
+import { breakpoints } from "../../media";
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
   background-color: ${props => props.theme.colors.backgroundPrimary};
+  ${breakpoints.md} {
+    display: none;
+  }
 `;
 const ToolBarItem = styled.span<IActive>`
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   font-size: 18px;
@@ -19,6 +27,9 @@ const ToolBarItem = styled.span<IActive>`
   border-top: 1px solid ${(props) => props.active ? props.theme.colors.accent : 'transparent'};
   border-right: 1px solid ${props => props.theme.colors.border};
   color: ${props => props.theme.colors.textPrimary};
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  cursor: pointer;
+
 `;
 const Img = styled.img`
   width: 20px;

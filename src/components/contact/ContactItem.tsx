@@ -24,12 +24,18 @@ const ContactWrap = styled.div`
 const ContactTitle = styled.h2`
   font-size: 28px;
   color: ${props => props.theme.colors.accent}
+  ${ breakpoints.md } {
+    font-size: 24px;
+  }
 `;
 const ContactContent = styled.ul`
   margin-left:20px;
   li {
     font-size:20px;
     padding: 10px 0;
+    ${ breakpoints.md } {
+      font-size: 16px;
+    }
   }
   a {
     color: ${props => props.theme.colors.warning}
@@ -38,11 +44,17 @@ const ContactContent = styled.ul`
 const SendTitle = styled.h2`
   font-size:40px;
   font-weight: bold;
+  ${ breakpoints.md } {
+    font-size: 28px;
+  }
 `;
 const SendContent = styled.p`
   font-size:18px;
   font-weight: normal;
   margin-top:10px;
+  ${ breakpoints.md } {
+    font-size: 16px;
+  }
 `;
 const Form = styled.form`
   margin-top:20px;
@@ -71,6 +83,9 @@ const Field = styled.div`
   p {
     font-size:20px;
     margin-bottom:10px;
+    ${ breakpoints.md } {
+      font-size: 16px;
+    }
   }
   input {
     border: 0;

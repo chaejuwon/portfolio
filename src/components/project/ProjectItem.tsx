@@ -9,7 +9,7 @@ import {
 import projectIcon from "../../assets/images/project_title_icon.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useMatch, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { IoIosLink } from "react-icons/io";
@@ -44,6 +44,9 @@ const ProjectTitle = styled.h2`
   img {
     margin-right:5px;
     width: 50px;
+  }
+  ${ breakpoints.md } {
+    font-size: 28px;
   }
 `;
 const ProjectNav = styled.ul`
@@ -397,6 +400,14 @@ function ProjectItem() {
   const filteredData = listData?.filter((project) => {
     return category === "ALL" || project.category === category;
   });
+
+  // 모바일 확인
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = window.matchMedia("(max-width: 768px)").matches;
+    setIsMobile(check);
+  },[])
   return (
     <Wrapper>
       <ProjectWrapper>
@@ -426,7 +437,10 @@ function ProjectItem() {
                   ))}
                 </InfoWrap>
                 <CategoryLabel>{project.category}</CategoryLabel>
-                <HoverWrap variants={hoverVariants} initial="initial" whileHover="animate" exit="exit">
+                <HoverWrap variants={hoverVariants} initial="initial"
+                           whileHover={!isMobile ? "animate" : undefined}
+                           whileTap={isMobile ? "animate" : undefined}
+                           exit="exit">
                   <HoverIconWrap>
                     <Link to={project.git} target="_blank" data-tooltip-id="git-tip" data-tooltip-content="GitHub">
                       <FaGithub fontSize={30} />

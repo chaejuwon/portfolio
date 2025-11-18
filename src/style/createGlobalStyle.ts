@@ -11,6 +11,7 @@ import PretendardRegular from '../assets/fonts/Pretendard/Pretendard-Regular.wof
 import PretendardMedium from '../assets/fonts/Pretendard/Pretendard-Medium.woff';
 import PretendardBold from '../assets/fonts/Pretendard/Pretendard-Bold.woff';
 import PretendardExtraBold from '../assets/fonts/Pretendard/Pretendard-ExtraBold.woff';
+import { breakpoints } from "../media";
 
 export const GlobalStyle = createGlobalStyle`
 //@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -139,23 +140,28 @@ a {
 
 /* 스크롤바 전체 영역 */
 &::-webkit-scrollbar {
-     width: 8px; /* 스크롤바 너비 */
- }
+  width: 8px; /* 스크롤바 너비 */
+}
 
 /* 스크롤바 트랙 (배경) */
 &::-webkit-scrollbar-track {
-     background: ${props => props.theme.colors.backgroundThird};
- }
+  background: ${props => props.theme.colors.backgroundThird};
+}
 
 /* 스크롤바 핸들 */
 &::-webkit-scrollbar-thumb {
-     background: ${props => props.theme.colors.backgroundPrimary}; /* 예시 색상 */
-     border-radius: 4px; /* 둥근 모서리 */
- }
+  background: ${props => props.theme.colors.backgroundPrimary}; /* 예시 색상 */
+  border-radius: 4px; /* 둥근 모서리 */
+}
 
 /* 스크롤바 핸들 hover 시 */
 &::-webkit-scrollbar-thumb:hover {
-     background: ${props => props.theme.colors.backgroundSecondary};
- }
-;
+  background: ${props => props.theme.colors.backgroundSecondary};
+}
+
+${ breakpoints.md } {
+  
+}
+
+
 `;
